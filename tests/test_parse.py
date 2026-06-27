@@ -22,7 +22,8 @@ class TestParse(unittest.TestCase):
         orcid_to_wikidata: dict[str, str] = {}
         with EXAMPLE_PATH.open() as file:
             res = _process_file(file, grounder, orcid_to_wikidata, orcid_to_wikimedia_commons)
-
+        if res is None:
+            self.fail()
         self.assertTrue(
             any(
                 work.pubmed == "36151740"

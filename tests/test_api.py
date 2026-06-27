@@ -17,9 +17,8 @@ class TestAPI(unittest.TestCase):
             raise unittest.SkipTest("database hasn't been pre-cached")
 
         grounder = get_orcid_grounder()
-        match = grounder.get_best_match("Charles Tapley Hoyt")
-        self.assertIsNotNone(match)
+        match = grounder.get_best_match("Charles Tapley Hoyt", strict=True)
         self.assertEqual("0000-0003-4423-4370", match.identifier)
 
-        match = grounder.get_best_match("abcdefghijklmnop")
-        self.assertIsNone(match)
+        match2 = grounder.get_best_match("abcdefghijklmnop")
+        self.assertIsNone(match2)

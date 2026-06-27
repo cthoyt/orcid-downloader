@@ -50,6 +50,7 @@ dependencies = [
     "tqdm",
     "lxml",
     "pystow",
+    "ror-downloader",
     "pydantic",
     "pydantic-extra-types[pycountry]",
     "semantic-pydantic",

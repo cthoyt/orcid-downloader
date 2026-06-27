@@ -5,6 +5,7 @@ from __future__ import annotations
 from functools import lru_cache
 from typing import cast
 
+import curies
 import gilda
 import pyobo
 import ssslm
@@ -47,6 +48,9 @@ class RORGrounder(gilda.Grounder):
 
 
 @lru_cache(1)
-def get_ror_grounder(version: str | None = None) -> ssslm.Grounder[pyobo.Reference]:
+def get_ror_grounder(version: str | None = None) -> ssslm.Grounder[curies.NamableReference]:
     """Get a grounder for ROR."""
-    return pyobo.get_grounder("ror", grounder_cls=RORGrounder, force_process=False, version=version)
+    return cast(
+        ssslm.Grounder[curies.NamableReference],
+        pyobo.get_grounder("ror", grounder_cls=RORGrounder, force_process=False, version=version),
+    )
