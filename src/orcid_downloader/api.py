@@ -626,7 +626,7 @@ def _iter_other_names(t: Element) -> Iterable[str]:
                 yield clean_name(z.strip())
 
 
-UNKNOWN_SOURCES = {}
+UNKNOWN_SOURCES: dict[str, str] = {}
 LOWERCASE_THESE_SOURCES = {"RINGGOLD", "GRID", "LEI"}
 UNKNOWN_NAMES: typing.Counter[str] = Counter()
 UNKNOWN_NAMES_EXAMPLES: dict[str, str] = {}
@@ -974,7 +974,7 @@ def _get_date(date_element: Element) -> Date | None:
         return None
     month = date_element.findtext(".//common:month", namespaces=NAMESPACES)
     day = date_element.findtext(".//common:day", namespaces=NAMESPACES)
-    return Date(year=year, month=month, day=day)
+    return Date(year=int(year), month=month, day=day)
 
 
 def _get_disambiguated_organization(

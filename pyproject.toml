@@ -1,7 +1,6 @@
-# See https://setuptools.readthedocs.io/en/latest/build_meta.html
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.6.6,<1.0"]
+build-backend = "uv_build"
 
 [project]
 name = "orcid_downloader"
@@ -21,7 +20,6 @@ classifiers = [
     "Development Status :: 1 - Planning",
     "Environment :: Console",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Framework :: Pytest",
     "Framework :: tox",
@@ -40,7 +38,8 @@ keywords = [
 # License Information. This can be any valid SPDX identifiers that can be resolved
 # with URLs like https://spdx.org/licenses/MIT
 # See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license
-license = { file = "LICENSE" }
+license = "MIT"
+license-files = ["LICENSE"]
 
 requires-python = ">=3.12"
 dependencies = [
@@ -62,7 +61,7 @@ tests = [
 ]
 process = [
     "pyobo>=0.12.15",
-    "ssslm[gilda-slim]",
+    "ssslm[gilda-slim]>=0.2.1",
     "gilda-slim>=1.4.1.1",
     "tabulate",
 ]
@@ -76,6 +75,11 @@ docs = [
     "sphinx_automodapi",
 ]
 
+[dependency-groups]
+typing = [
+    "pydantic",
+]
+
 # See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#urls
 [project.urls]
 "Bug Tracker" = "https://github.com/cthoyt/orcid_downloader/issues"
@@ -83,30 +87,12 @@ Homepage = "https://github.com/cthoyt/orcid_downloader"
 Repository = "https://github.com/cthoyt/orcid_downloader.git"
 Documentation = "https://orcid_downloader.readthedocs.io"
 
-[tool.setuptools]
-package-dir = { "" = "src" }
-
-[tool.setuptools.packages.find]
-# this implicitly sets `packages = ":find"`
-where = ["src"]  # list of folders that contain the packages (["."] by default)
-
-# See https://setuptools.pypa.io/en/latest/userguide/datafiles.html
-[tool.setuptools.package-data]
-"*" = ["*.*"]
-
-
-
 [tool.cruft]
 skip = [
     "**/__init__.py",
     "tests/*"
 ]
 
-# MyPy, see https://mypy.readthedocs.io/en/stable/config_file.html
-[tool.mypy]
-plugins = [
-    "pydantic.mypy",
-]
 
 # Doc8, see https://doc8.readthedocs.io/en/stable/readme.html#ini-file-usage
 [tool.doc8]

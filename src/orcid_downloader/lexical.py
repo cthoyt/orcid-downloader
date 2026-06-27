@@ -45,8 +45,10 @@ def get_orcid_grounder(version_info: VersionInfo | None = None) -> ssslm.Grounde
 
 @lru_cache(1)
 def _get_orcid_grounder_helper(path: str | Path) -> ssslm.Grounder:
-    path_norm = Path(path).expanduser().resolve().as_posix()
-    entries = UngroupedSqliteEntries(path_norm)  # type:ignore[arg-type]
+    path = Path(path).expanduser().resolve()
+    if not path.is_file():
+        raise ValueError(f"ORCiD index is not available at {path}")
+    entries = UngroupedSqliteEntries(path.as_posix())  # type:ignore[arg-type]
     gilda_grounder = NonIndexingGildaGrounder(entries)
     return ExtendedMatcher(gilda_grounder)
 
@@ -79,6 +81,10 @@ class UngroupedSqliteEntries(SqliteEntries, dict):  # type:ignore[misc,type-arg]
         """Get the number of unique keys in the lexical index."""
         res = self.get_connection().execute("SELECT COUNT(DISTINCT norm_text) FROM terms")
         return cast(int, res.fetchone()[0])
+
+    def __bool__(self) -> bool:
+        """Check if this is not empty."""
+        return len(self) > 0
 
     def __iter__(self) -> Iterator[gilda.Term]:
         """Iterate over the keys in the lexical index."""
