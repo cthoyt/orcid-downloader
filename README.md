@@ -47,8 +47,8 @@ path = orcid_downloader.ensure_summaries()
 records = orcid_downloader.get_records()
 ```
 
-The processed records are distributed
-on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10137939.svg)](https://zenodo.org/records/10137939).
+The processed records are distributed on
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10137939.svg)](https://zenodo.org/records/10137939).
 
 Grounding can be done on the name field, aliases, and credit name field:
 
