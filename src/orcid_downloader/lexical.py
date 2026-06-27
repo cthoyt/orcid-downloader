@@ -45,44 +45,50 @@ def get_orcid_grounder(version_info: VersionInfo | None = None) -> ssslm.Grounde
 
 @lru_cache(1)
 def _get_orcid_grounder_helper(path: str | Path) -> ssslm.Grounder:
-    path_norm = Path(path).expanduser().resolve().as_posix()
-    entries = UngroupedSqliteEntries(path_norm)  # type:ignore[arg-type]
+    path = Path(path).expanduser().resolve()
+    if not path.is_file():
+        raise ValueError(f"ORCiD index is not available at {path}")
+    entries = UngroupedSqliteEntries(path.as_posix())  # type:ignore[no-untyped-call]
     gilda_grounder = NonIndexingGildaGrounder(entries)
     return ExtendedMatcher(gilda_grounder)
 
 
-class NonIndexingGildaGrounder(gilda.Grounder):  # type:ignore[misc]
+class NonIndexingGildaGrounder(gilda.Grounder):
     """A custom grounder for ORCID."""
 
     def _build_prefix_index(self) -> None:
         pass  # override building this to save 60 seconds on startup
 
 
-class UngroupedSqliteEntries(SqliteEntries, dict):  # type:ignore[misc,type-arg]
+class UngroupedSqliteEntries(SqliteEntries, dict):  # type:ignore[type-arg]
     """An interface to the SQLite lexical index compatible with Gilda."""
 
     def get(self, key: str, default: list[gilda.Term] | None = None) -> list[gilda.Term] | None:  # type:ignore[override]
         """Get a term from the lexical index."""
-        res = self.get_connection().execute("SELECT term FROM terms WHERE norm_text=?", (key,))
+        res = self.get_connection().execute("SELECT term FROM terms WHERE norm_text=?", (key,))  # type:ignore[no-untyped-call]
         terms = res.fetchall()
         if not terms:
             return default
-        return [gilda.Term(**json.loads(term)) for (term,) in terms]
+        return [gilda.Term(**json.loads(term)) for (term,) in terms]  # type:ignore[no-untyped-call]
 
     def values(self) -> Iterable[gilda.Term]:  # type:ignore[override]
         """Iterate over the terms in the lexical index."""
-        res = self.get_connection().execute("SELECT term FROM terms")
+        res = self.get_connection().execute("SELECT term FROM terms")  # type:ignore[no-untyped-call]
         for (result,) in res.fetchall():
-            yield gilda.Term(**json.loads(result))
+            yield gilda.Term(**json.loads(result))  # type:ignore[no-untyped-call]
 
     def __len__(self) -> int:
         """Get the number of unique keys in the lexical index."""
-        res = self.get_connection().execute("SELECT COUNT(DISTINCT norm_text) FROM terms")
+        res = self.get_connection().execute("SELECT COUNT(DISTINCT norm_text) FROM terms")  # type:ignore[no-untyped-call]
         return cast(int, res.fetchone()[0])
+
+    def __bool__(self) -> bool:
+        """Check if this is not empty."""
+        return len(self) > 0
 
     def __iter__(self) -> Iterator[gilda.Term]:
         """Iterate over the keys in the lexical index."""
-        res = self.get_connection().execute("SELECT DISTINCT norm_text FROM terms")
+        res = self.get_connection().execute("SELECT DISTINCT norm_text FROM terms")  # type:ignore[no-untyped-call]
         for (norm_text,) in tqdm(
             res.fetchall(), desc="Iterating over lexical index", unit_scale=True
         ):
@@ -134,12 +140,12 @@ def _write_lexical_sqlite(path: Path, records: Iterable[Record]) -> None:
             cur.execute(q)
 
         rows = (
-            (term.norm_text, json.dumps(term.to_json()))
+            (term.norm_text, json.dumps(term.to_json()))  # type:ignore[no-untyped-call]
             for record in records
             if record.name
             for literal_mapping in _record_to_literal_mappings(record)
             # TODO upstream this so no term gets constructed if it doesn't have text
-            if normalize(literal_mapping.text).strip() and (term := literal_mapping.to_gilda())
+            if normalize(literal_mapping.text).strip() and (term := literal_mapping.to_gilda())  # type:ignore[no-untyped-call]
         )
         for x in batched(rows, 1_000_000):
             df = pd.DataFrame(x, columns=["norm_text", "term"])
@@ -186,7 +192,7 @@ def _record_to_literal_mappings(record: Record) -> Iterable[LiteralMapping]:
     from gilda.process import normalize
 
     name = record.name
-    if not name or not normalize(name).strip():
+    if not name or not normalize(name).strip():  # type:ignore[no-untyped-call]
         return
 
     reference = NamedReference(
@@ -203,7 +209,7 @@ def _record_to_literal_mappings(record: Record) -> Iterable[LiteralMapping]:
     aliases: set[str] = set()
     aliases.update(name_to_synonyms(name))
     for alias in record.aliases:
-        if not normalize(alias).strip():
+        if not normalize(alias).strip():  # type:ignore[no-untyped-call]
             continue
         aliases.add(alias)
         aliases.update(name_to_synonyms(alias))

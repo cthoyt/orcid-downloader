@@ -6,6 +6,7 @@ import gzip
 from itertools import chain
 from pathlib import Path
 
+import curies
 import pyobo
 import ssslm
 from tqdm import tqdm
@@ -122,7 +123,7 @@ def write_owl_rdf(  # noqa:C901
     *,
     version_info: VersionInfo | None = None,
     force: bool = False,
-    ror_grounder: ssslm.Grounder | None = None,
+    ror_grounder: ssslm.Grounder[curies.NamableReference] | None = None,
     ror_version: str | None = None,
 ) -> Path:
     """Write OWL RDF in a gzipped file."""

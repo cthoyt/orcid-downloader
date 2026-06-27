@@ -18,6 +18,7 @@ from typing import TYPE_CHECKING, Annotated, Any, TextIO
 from urllib.parse import parse_qs, unquote, urlparse
 
 import bioregistry
+import curies
 import pystow
 import ssslm
 from curies import NamableReference
@@ -407,7 +408,7 @@ def iter_records(  # noqa:C901
     desc: str = "Loading ORCID",
     head: int | None = None,
     version_info: VersionInfo | None,
-    ror_grounder: ssslm.Grounder | None,
+    ror_grounder: ssslm.Grounder[curies.NamableReference] | None,
 ) -> Iterable[Record]:
     """Parse ORCID summary XML files, takes about an hour."""
     if version_info is None:
@@ -492,7 +493,7 @@ def get_records(
     *,
     force: bool = False,
     version_info: VersionInfo | None = None,
-    ror_grounder: ssslm.Grounder | None,
+    ror_grounder: ssslm.Grounder[curies.NamableReference] | None,
 ) -> dict[str, Record]:
     """Parse ORCID summary XML files, takes about an hour."""
     return {
@@ -505,7 +506,7 @@ def get_records(
 
 def _process_file(  # noqa:C901
     file: typing.TextIO,
-    ror_grounder: ssslm.Grounder,
+    ror_grounder: ssslm.Grounder[curies.NamableReference],
     orcid_to_wikidata: dict[str, str],
     orcid_to_wikimedia_commons: dict[str, str],
 ) -> Record | None:
@@ -626,8 +627,8 @@ def _iter_other_names(t: Element) -> Iterable[str]:
                 yield clean_name(z.strip())
 
 
-UNKNOWN_SOURCES = {}
-LOWERCASE_THESE_SOURCES = {"RINGGOLD", "GRID", "LEI"}
+UNKNOWN_SOURCES: dict[str, str] = {}
+LOWERCASE_THESE_SOURCES: set[str] = {"RINGGOLD", "GRID", "LEI"}
 UNKNOWN_NAMES: typing.Counter[str] = Counter()
 UNKNOWN_NAMES_EXAMPLES: dict[str, str] = {}
 UNKNOWN_NAMES_FULL: dict[str, str] = {}
@@ -918,19 +919,25 @@ def _standardize_pubmed(pubmed: str) -> str | None:
     return None
 
 
-def _get_employments(tree: ElementTree, affiliation_grounder: ssslm.Grounder) -> list[Affiliation]:
+def _get_employments(
+    tree: ElementTree, affiliation_grounder: ssslm.Grounder[curies.NamableReference]
+) -> list[Affiliation]:
     elements = tree.findall(".//employment:employment-summary", namespaces=NAMESPACES)
     return _get_affiliations(elements, affiliation_grounder)
 
 
-def _get_educations(tree: ElementTree, affiliation_grounder: ssslm.Grounder) -> list[Affiliation]:
+def _get_educations(
+    tree: ElementTree, affiliation_grounder: ssslm.Grounder[curies.NamableReference]
+) -> list[Affiliation]:
     elements = tree.findall(
         ".//activities:educations//education:education-summary", namespaces=NAMESPACES
     )
     return _get_affiliations(elements, affiliation_grounder)
 
 
-def _get_memberships(tree: ElementTree, affiliation_grounder: ssslm.Grounder) -> list[Affiliation]:
+def _get_memberships(
+    tree: ElementTree, affiliation_grounder: ssslm.Grounder[curies.NamableReference]
+) -> list[Affiliation]:
     elements = tree.findall(
         ".//activities:memberships//membership:membership-summary", namespaces=NAMESPACES
     )
@@ -938,7 +945,7 @@ def _get_memberships(tree: ElementTree, affiliation_grounder: ssslm.Grounder) ->
 
 
 def _get_affiliations(
-    elements: list[Element], affiliation_grounder: ssslm.Grounder
+    elements: list[Element], affiliation_grounder: ssslm.Grounder[curies.NamableReference]
 ) -> list[Affiliation]:
     results = []
     for element in elements:
@@ -974,7 +981,7 @@ def _get_date(date_element: Element) -> Date | None:
         return None
     month = date_element.findtext(".//common:month", namespaces=NAMESPACES)
     day = date_element.findtext(".//common:day", namespaces=NAMESPACES)
-    return Date(year=year, month=month, day=day)
+    return Date(year=int(year), month=month, day=day)
 
 
 def _get_disambiguated_organization(
@@ -984,7 +991,9 @@ def _get_disambiguated_organization(
     for de in organization_element.findall(
         ".//common:disambiguated-organization", namespaces=NAMESPACES
     ):
-        source = de.findtext(".//common:disambiguation-source", namespaces=NAMESPACES)
+        source: str | None = de.findtext(".//common:disambiguation-source", namespaces=NAMESPACES)
+        if not source:
+            continue
         link = de.findtext(".//common:disambiguated-organization-identifier", namespaces=NAMESPACES)
         if not link:
             continue
@@ -1042,7 +1051,7 @@ def write_summaries(  # noqa:C901
     *,
     version_info: VersionInfo | None = None,
     force: bool = False,
-    ror_grounder: ssslm.Grounder | None,
+    ror_grounder: ssslm.Grounder[curies.NamableReference] | None,
 ) -> None:
     """Write summary files."""
     from tabulate import tabulate

@@ -56,9 +56,9 @@ def write_sqlite(
 ) -> None:
     """Write a SQLite database."""
     import pandas as pd
-    from pyobo.sources.ror import get_ror_records
+    from ror_downloader import get_organizations
 
-    _, ror_records = get_ror_records()
+    _, ror_records = get_organizations()
     ror_rows = []
     for ror_record in tqdm(ror_records, unit_scale=True, unit="record", desc="Parsing ROR"):
         ror_identifier = ror_record.id.removeprefix("https://ror.org/")

@@ -1,12 +1,11 @@
-# See https://setuptools.readthedocs.io/en/latest/build_meta.html
 [build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["uv_build>=0.11.2,<1.0"]
+build-backend = "uv_build"
 
 [project]
-name = "orcid_downloader"
+name = "orcid-downloader"
 version = "0.1.1-dev"
-description = "Download and process ORCID in bulk"
+description = "Download, process, and semantically enrich ORCiD in bulk"
 readme = "README.md"
 authors = [
     { name = "Charles Tapley Hoyt", email = "cthoyt@gmail.com" }
@@ -21,48 +20,89 @@ classifiers = [
     "Development Status :: 1 - Planning",
     "Environment :: Console",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Framework :: Pytest",
     "Framework :: tox",
     "Framework :: Sphinx",
+    "Natural Language :: English",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
 ]
 keywords = [
     "snekpack", # please keep this keyword to credit the cookiecutter-snekpack template
     "cookiecutter",
     "orcid",
     "authorship",
+    "bibliometrics",
 ]
 
-# License Information. This can be any valid SPDX identifiers that can be resolved
-# with URLs like https://spdx.org/licenses/MIT
-# See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license
-license = { file = "LICENSE" }
+# License Information.
+# See PEP-639 at https://peps.python.org/pep-0639/#add-license-files-key
+license = "MIT"
+license-files = ["LICENSE"]
 
 requires-python = ">=3.12"
 dependencies = [
     "tqdm",
     "lxml",
     "pystow",
+    "ror-downloader",
     "pydantic",
-    "pydantic_extra_types[pycountry]",
-    "semantic_pydantic",
+    "pydantic-extra-types[pycountry]",
+    "semantic-pydantic",
     "bioregistry>=0.11.13",
     "qualo>=0.0.2",
-    "wikidata_client",
+    "wikidata-client",
 ]
 
-[project.optional-dependencies]
+# see https://peps.python.org/pep-0735/ and https://docs.astral.sh/uv/concepts/dependencies/#dependency-groups
+[dependency-groups]
 tests = [
     "pytest",
-    "coverage",
+    "coverage[toml]",
 ]
+docs = [
+    "sphinx>=8",
+    "sphinx-rtd-theme>=3.0",
+    "sphinx-click",
+    "sphinx-automodapi",
+]
+lint = [
+    "ruff",
+]
+typing = [
+    { include-group = "tests" },
+    "mypy",
+    "pydantic",
+    "types-click",
+]
+docs-lint = [
+    { include-group = "docs" },
+    "doc8",
+]
+format-docs = [
+    { include-group = "docs" },
+    "docstrfmt",
+]
+doctests = [
+    "xdoctest",
+    "pygments",
+]
+pyroma = [
+    "uv-build",
+    "pyroma",
+    "pygments",
+]
+
+# see https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#dependencies-optional-dependencies
+[project.optional-dependencies]
 process = [
     "pyobo>=0.12.15",
-    "ssslm[gilda-slim]",
+    "ssslm[gilda-slim]>=0.2.1",
     "gilda-slim>=1.4.1.1",
     "tabulate",
 ]
@@ -70,31 +110,19 @@ autocomplete = [
     "ssslm[gilda-slim]",
     "fastapi",
 ]
-docs = [
-    "sphinx>=8",
-    "sphinx-rtd-theme>=3.0",
-    "sphinx_automodapi",
-]
+
 
 # See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#urls
+# and also https://packaging.python.org/en/latest/specifications/well-known-project-urls/
 [project.urls]
-"Bug Tracker" = "https://github.com/cthoyt/orcid_downloader/issues"
-Homepage = "https://github.com/cthoyt/orcid_downloader"
-Repository = "https://github.com/cthoyt/orcid_downloader.git"
+"Bug Tracker" = "https://github.com/cthoyt/orcid-downloader/issues"
+Homepage = "https://github.com/cthoyt/orcid-downloader"
+Repository = "https://github.com/cthoyt/orcid-downloader.git"
 Documentation = "https://orcid_downloader.readthedocs.io"
+Funding = "https://github.com/sponsors/cthoyt"
 
-[tool.setuptools]
-package-dir = { "" = "src" }
-
-[tool.setuptools.packages.find]
-# this implicitly sets `packages = ":find"`
-where = ["src"]  # list of folders that contain the packages (["."] by default)
-
-# See https://setuptools.pypa.io/en/latest/userguide/datafiles.html
-[tool.setuptools.package-data]
-"*" = ["*.*"]
-
-
+[project.scripts]
+orcid-downloader = "orcid_downloader.cli:main"
 
 [tool.cruft]
 skip = [
@@ -115,7 +143,7 @@ max-line-length = 120
 # Pytest, see https://docs.pytest.org/en/stable/reference/customize.html#pyproject-toml
 [tool.pytest.ini_options]
 markers = [
-    "slow: marks tests as slow (deselect with '-m \"not slow\"')"
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
 ]
 
 # Coverage, see https://coverage.readthedocs.io/en/latest/config.html
@@ -127,6 +155,9 @@ source = [
 omit = [
     "tests/*",
     "docs/*",
+    "src/orcid_downloader/version.py",
+    "src/orcid_downloader/__main__.py",
+    "src/orcid_downloader/cli.py",
 ]
 
 [tool.coverage.paths]
@@ -148,7 +179,7 @@ exclude_lines = [
 
 [tool.ruff]
 line-length = 100
-# extend-include = ["*.ipynb"]
+extend-include = ["*.ipynb"]
 
 [tool.ruff.lint]
 # See https://docs.astral.sh/ruff/rules
@@ -172,7 +203,6 @@ extend-select = [
 ]
 ignore = [
     "D105", # Missing docstring in magic method
-    "E203", # Black conflicts with the following
 ]
 
 # See https://docs.astral.sh/ruff/settings/#per-file-ignores

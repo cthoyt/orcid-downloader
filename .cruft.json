@@ -1,25 +1,32 @@
 {
   "template": "https://github.com/cthoyt/cookiecutter-snekpack",
-  "commit": "0fe3ed79c9dd15e6434e18f9dec098c4e39c7dbf",
+  "commit": "6bde7626385247bd41f1a3bf0be5fe47d1563872",
   "checkout": null,
   "context": {
     "cookiecutter": {
       "package_name": "orcid_downloader",
-      "package_name_stylized": "ORCID Downloader",
-      "short_description": "Download and process ORCID in bulk",
+      "package_name_stylized": "ORCiD Downloader",
+      "short_description": "Download, process, and semantically enrich ORCiD in bulk",
       "author_name": "Charles Tapley Hoyt",
+      "author_github": "cthoyt",
       "author_email": "cthoyt@gmail.com",
       "github_organization_name": "cthoyt",
-      "github_repository_name": "orcid_downloader",
-      "command_line_interface": false,
+      "github_repository_name": "orcid-downloader",
+      "command_line_interface": true,
       "gitlab": false,
       "runner": "tox",
+      "citation_file": false,
+      "__not_charlie": "",
       "__runner": "tox -e",
       "__runner_uv": "--with tox-uv tox -e",
       "__runner_pip": "tox tox-uv",
+      "__runner_install_uv": "uv tool install tox --with tox-uv",
+      "__runner_install_pip": "python3 -m pip install tox tox-uv",
       "__runner_tests": "py",
-      "__gh_slug": "cthoyt/orcid_downloader",
-      "_template": "https://github.com/cthoyt/cookiecutter-snekpack"
+      "__gh_slug": "cthoyt/orcid-downloader",
+      "__package_name_dashed": "orcid-downloader",
+      "_template": "https://github.com/cthoyt/cookiecutter-snekpack",
+      "_commit": "6bde7626385247bd41f1a3bf0be5fe47d1563872"
     }
   },
   "directory": null
