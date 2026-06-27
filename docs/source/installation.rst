@@ -1,22 +1,50 @@
-Installation
-============
-The most recent release can be installed from
-`PyPI <https://pypi.org/project/orcid_downloader>`_ with:
+##############
+ Installation
+##############
 
-.. code-block:: shell
+The most recent release can be installed from `PyPI
+<https://pypi.org/project/orcid-downloader>`_ with uv:
 
-    pip install orcid_downloader
+.. code-block:: console
 
-The most recent code and data can be installed directly from GitHub with:
+    $ uv pip install orcid-downloader
 
-.. code-block:: shell
+or with pip:
 
-    pip install git+https://github.com/cthoyt/orcid_downloader.git
+.. code-block:: console
 
-To install in development mode, use the following:
+    $ python3 -m pip install orcid-downloader
 
-.. code-block:: shell
+*********************
+ Installing from git
+*********************
 
-    git clone git+https://github.com/cthoyt/orcid_downloader.git
-    cd orcid_downloader
-    pip install -e .
+The most recent code and data can be installed directly from GitHub with uv:
+
+.. code-block:: console
+
+    $ uv pip install git+https://github.com/cthoyt/orcid-downloader.git
+
+or with pip:
+
+.. code-block:: console
+
+    $ python3 -m pip install git+https://github.com/cthoyt/orcid-downloader.git
+
+****************************
+ Installing for development
+****************************
+
+To install in development mode with uv:
+
+.. code-block:: console
+
+    $ git clone git+https://github.com/cthoyt/orcid-downloader.git
+    $ cd orcid-downloader
+    $ uv pip install -e .
+
+or with pip:
+
+.. code-block:: console
+
+    $ python3 -m pip install -e .

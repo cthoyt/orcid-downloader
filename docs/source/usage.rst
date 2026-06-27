@@ -1,4 +1,5 @@
-Usage
-=====
-.. automodule:: orcid_downloader.api
-    :members:
+#######
+ Usage
+#######
+
+.. automodapi:: orcid_downloader.api

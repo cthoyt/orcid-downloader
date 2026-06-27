@@ -1,0 +1,4 @@
+# see https://docs.codecov.com/v4.6/docs/codecov-yaml
+ignore:
+  - "src/orcid_downloader/__main__.py"
+  - "src/orcid_downloader/cli.py"
