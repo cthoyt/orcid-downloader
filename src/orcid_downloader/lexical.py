@@ -48,19 +48,19 @@ def _get_orcid_grounder_helper(path: str | Path) -> ssslm.Grounder:
     path = Path(path).expanduser().resolve()
     if not path.is_file():
         raise ValueError(f"ORCiD index is not available at {path}")
-    entries = UngroupedSqliteEntries(path.as_posix())  # type:ignore[arg-type]
+    entries = UngroupedSqliteEntries(path.as_posix())
     gilda_grounder = NonIndexingGildaGrounder(entries)
     return ExtendedMatcher(gilda_grounder)
 
 
-class NonIndexingGildaGrounder(gilda.Grounder):  # type:ignore[misc]
+class NonIndexingGildaGrounder(gilda.Grounder):
     """A custom grounder for ORCID."""
 
     def _build_prefix_index(self) -> None:
         pass  # override building this to save 60 seconds on startup
 
 
-class UngroupedSqliteEntries(SqliteEntries, dict):  # type:ignore[misc,type-arg]
+class UngroupedSqliteEntries(SqliteEntries, dict):  # type:ignore[type-arg]
     """An interface to the SQLite lexical index compatible with Gilda."""
 
     def get(self, key: str, default: list[gilda.Term] | None = None) -> list[gilda.Term] | None:  # type:ignore[override]

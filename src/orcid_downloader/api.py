@@ -18,6 +18,7 @@ from typing import TYPE_CHECKING, Annotated, Any, TextIO
 from urllib.parse import parse_qs, unquote, urlparse
 
 import bioregistry
+import pyobo
 import pystow
 import ssslm
 from curies import NamableReference
@@ -407,7 +408,7 @@ def iter_records(  # noqa:C901
     desc: str = "Loading ORCID",
     head: int | None = None,
     version_info: VersionInfo | None,
-    ror_grounder: ssslm.Grounder | None,
+    ror_grounder: ssslm.Grounder[pyobo.Reference] | None,
 ) -> Iterable[Record]:
     """Parse ORCID summary XML files, takes about an hour."""
     if version_info is None:
@@ -492,7 +493,7 @@ def get_records(
     *,
     force: bool = False,
     version_info: VersionInfo | None = None,
-    ror_grounder: ssslm.Grounder | None,
+    ror_grounder: ssslm.Grounder[pyobo.Reference] | None,
 ) -> dict[str, Record]:
     """Parse ORCID summary XML files, takes about an hour."""
     return {
@@ -505,7 +506,7 @@ def get_records(
 
 def _process_file(  # noqa:C901
     file: typing.TextIO,
-    ror_grounder: ssslm.Grounder,
+    ror_grounder: ssslm.Grounder[pyobo.Reference],
     orcid_to_wikidata: dict[str, str],
     orcid_to_wikimedia_commons: dict[str, str],
 ) -> Record | None:
@@ -918,19 +919,25 @@ def _standardize_pubmed(pubmed: str) -> str | None:
     return None
 
 
-def _get_employments(tree: ElementTree, affiliation_grounder: ssslm.Grounder) -> list[Affiliation]:
+def _get_employments(
+    tree: ElementTree, affiliation_grounder: ssslm.Grounder[pyobo.Reference]
+) -> list[Affiliation]:
     elements = tree.findall(".//employment:employment-summary", namespaces=NAMESPACES)
     return _get_affiliations(elements, affiliation_grounder)
 
 
-def _get_educations(tree: ElementTree, affiliation_grounder: ssslm.Grounder) -> list[Affiliation]:
+def _get_educations(
+    tree: ElementTree, affiliation_grounder: ssslm.Grounder[pyobo.Reference]
+) -> list[Affiliation]:
     elements = tree.findall(
         ".//activities:educations//education:education-summary", namespaces=NAMESPACES
     )
     return _get_affiliations(elements, affiliation_grounder)
 
 
-def _get_memberships(tree: ElementTree, affiliation_grounder: ssslm.Grounder) -> list[Affiliation]:
+def _get_memberships(
+    tree: ElementTree, affiliation_grounder: ssslm.Grounder[pyobo.Reference]
+) -> list[Affiliation]:
     elements = tree.findall(
         ".//activities:memberships//membership:membership-summary", namespaces=NAMESPACES
     )
@@ -938,7 +945,7 @@ def _get_memberships(tree: ElementTree, affiliation_grounder: ssslm.Grounder) ->
 
 
 def _get_affiliations(
-    elements: list[Element], affiliation_grounder: ssslm.Grounder
+    elements: list[Element], affiliation_grounder: ssslm.Grounder[pyobo.Reference]
 ) -> list[Affiliation]:
     results = []
     for element in elements:

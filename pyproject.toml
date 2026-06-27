@@ -66,8 +66,9 @@ tests = [
 ]
 docs = [
     "sphinx>=8",
-    "sphinx-rtd-theme>=3.0","sphinx-click", 
-    "sphinx_automodapi",
+    "sphinx-rtd-theme>=3.0",
+    "sphinx-click",
+    "sphinx-automodapi",
 ]
 lint = [
     "ruff",
@@ -77,7 +78,6 @@ typing = [
     "mypy",
     "pydantic",
     "types-click",
-    # You will probably have to add additional type stubs here, especially if you're using tox-uv
 ]
 docs-lint = [
     { include-group = "docs" },
