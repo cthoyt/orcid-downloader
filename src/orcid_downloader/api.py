@@ -266,7 +266,7 @@ class Affiliation(BaseModel):
     name: str
     start: Date | None = Field(None, title="Start Year")
     end: Date | None = Field(None, title="End Year")
-    role: None | str | NamableReference = None
+    role: str | NamableReference | None = None
     xrefs: dict[str, str] = Field(default_factory=dict, title="Database Cross-references")
 
     # xrefs includes ror, ringgold, grid, funderregistry, lei
@@ -390,15 +390,14 @@ class Record(BaseModel):
 
 
 def _iter_tarfile_members(path: Path) -> Iterable[typing.IO[bytes]]:
-    tar_file = tarfile.open(path)
-    while member := tar_file.next():
-        if not member.name.endswith(".xml"):
-            continue
-        yv = tar_file.extractfile(member)
-        if yv is None:
-            continue
-        yield yv
-    tar_file.close()
+    with tarfile.open(path) as tar_file:
+        while member := tar_file.next():
+            if not member.name.endswith(".xml"):
+                continue
+            yv = tar_file.extractfile(member)
+            if yv is None:
+                continue
+            yield yv
 
 
 def iter_records(  # noqa:C901
@@ -564,8 +563,7 @@ def _process_file(  # noqa:C901
             aliases.add(label_name)
 
     aliases.update(_iter_other_names(tree))
-    if name in aliases:  # make sure there's no duplicate
-        aliases.remove(name)
+    aliases.discard(name)
     name, aliases = reconcile_aliases(name, aliases)
     # despite best efforts, no names are possible
     if name is None:
@@ -695,7 +693,7 @@ def _get_external_identifiers(tree: Element, orcid: str) -> tuple[dict[str, str]
             identifier = url.removeprefix("www.github.com/")
             if "/" not in identifier:  # i.e., this is not a specific repo
                 rv["github"] = identifier
-        elif url.startswith("twitter.com/") or url.startswith("x.com/"):
+        elif url.startswith(("twitter.com/", "x.com/")):
             pass  # skip twitter, it's not reasonable to participate on this platform anymore
         elif "facebook" in url or "instagram" in url:
             continue  # skip social media

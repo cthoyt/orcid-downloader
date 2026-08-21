@@ -189,8 +189,8 @@ REVERSE_REPLACEMENTS = {
         "Electronic Engineer",
     },
 }
-for k in REVERSE_REPLACEMENTS:
-    REVERSE_REPLACEMENTS[k].add(_norm(k))
+for k, values in REVERSE_REPLACEMENTS.items():
+    values.add(_norm(k))
 
 REPLACEMENTS: dict[str, str] = {
     _norm(value): k for k, values in REVERSE_REPLACEMENTS.items() for value in values
@@ -238,19 +238,19 @@ def standardize_role(  # noqa:C901
         if y in REPLACEMENTS:
             return REPLACEMENTS[y], True
 
-    if role_norm.startswith("bscin") or role_norm.startswith("bsc "):
+    if role_norm.startswith(("bscin", "bsc ")):
         # TODO get rid of this - everything in here should get curated
         ROLE_COUNTER_2[role] += 1
         return "Bachelor of Science", True
-    if role_norm.startswith("mscin") or role_norm.startswith("msc "):
+    if role_norm.startswith(("mscin", "msc ")):
         # TODO get rid of this - everything in here should get curated
         ROLE_COUNTER_2[role] += 1
         return "Master of Science", True
-    if role_norm.startswith("main") or role_norm.startswith("ma "):
+    if role_norm.startswith(("main", "ma ")):
         # TODO get rid of this - everything in here should get curated
         ROLE_COUNTER_2[role] += 1
         return "Master of Arts", True
-    if role_norm.startswith("phdin") or role_norm.startswith("phd student in "):
+    if role_norm.startswith(("phdin", "phd student in ")):
         # TODO get rid of this - everything in here should get curated
         ROLE_COUNTER_2[role] += 1
         return "Doctor of Philosophy", True
@@ -277,7 +277,7 @@ def write_counter(
         sep = "\t"
     key_values = counter.most_common()
     if not key_values:
-        return None
+        return
     with path.open("w") as file:
         if isinstance(key_values[0][0], tuple):
             if header is None:
