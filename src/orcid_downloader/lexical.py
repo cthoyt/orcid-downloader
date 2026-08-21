@@ -7,7 +7,6 @@ import sqlite3
 from collections.abc import Iterable, Iterator
 from contextlib import closing
 from functools import lru_cache
-from itertools import batched
 from pathlib import Path
 from typing import Any, cast
 
@@ -17,6 +16,7 @@ import ssslm
 from curies import NamedReference
 from curies.vocabulary import exact_match, has_label
 from gilda.resources.sqlite_adapter import SqliteEntries
+from more_itertools import batched
 from pystow.utils import safe_open_writer
 from ssslm import LiteralMapping, LiteralMappingTuple
 from tqdm import tqdm

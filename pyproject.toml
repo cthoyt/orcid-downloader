@@ -58,6 +58,7 @@ dependencies = [
     "bioregistry>=0.11.13",
     "qualo>=0.0.2",
     "wikidata-client",
+    "more-itertools",
 ]
 
 # see https://peps.python.org/pep-0735/ and https://docs.astral.sh/uv/concepts/dependencies/#dependency-groups
