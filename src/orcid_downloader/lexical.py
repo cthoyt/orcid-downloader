@@ -208,7 +208,7 @@ def _record_to_literal_mappings(record: Record) -> Iterable[LiteralMapping]:
     )
     aliases: set[str] = set()
     aliases.update(name_to_synonyms(name))
-    for alias in record.aliases:
+    for alias in record.aliases or []:
         if not normalize(alias).strip():  # type:ignore[no-untyped-call]
             continue
         aliases.add(alias)

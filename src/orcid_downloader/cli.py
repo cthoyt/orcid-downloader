@@ -3,46 +3,78 @@
 from __future__ import annotations
 
 import time
+from typing import TYPE_CHECKING
 
 import click
+from more_click import verbose_option
 
-from orcid_downloader.api import (
-    VERSION_DEFAULT,
-    VersionInfo,
-    _get_output_module,
-    ground_researcher,
-    iter_records,
-    write_schema,
-    write_summaries,
-)
+if TYPE_CHECKING:
+    from .api import VersionInfo
 
 __all__ = ["main"]
 
 
-@click.command()
+@click.group()
+def main() -> None:
+    """Run the orcid-downloader CLI."""
+
+
+def _get_test_version_info() -> VersionInfo:
+    from .api import VERSION_DEFAULT, VersionInfo
+
+    return VersionInfo(
+        version=VERSION_DEFAULT.version,
+        url=VERSION_DEFAULT.url,
+        fname=VERSION_DEFAULT.fname,
+        size=VERSION_DEFAULT.size,
+        output_directory_name="output-test",
+    )
+
+
+@main.command()
 @click.option("--test", is_flag=True)
 @click.option("--ror-version")
-def main(test: bool, ror_version: str | None) -> None:
+@verbose_option
+def cache(test: bool, ror_version: str | None) -> None:
     """Process ORCID."""
-    from .ror import get_ror_grounder
+    import sys
 
-    ror_grounder = get_ror_grounder(version=ror_version)
+    from .api import (
+        VERSION_DEFAULT,
+        _get_output_module,
+        ground_researcher,
+        iter_records,
+        write_schema,
+        write_summaries,
+    )
 
     if test:
-        version_info = VersionInfo(
-            version=VERSION_DEFAULT.version,
-            url=VERSION_DEFAULT.url,
-            fname=VERSION_DEFAULT.fname,
-            size=VERSION_DEFAULT.size,
-            output_directory_name="output-test",
-        )
+        from ssslm.ner import EmptyGrounder
+
         list(
             iter_records(
-                force=True, version_info=version_info, head=10_000, ror_grounder=ror_grounder
+                force=True,
+                version_info=_get_test_version_info(),
+                head=10_000,
+                ror_grounder=EmptyGrounder(),
+                orcid_to_wikidata={},
+                orcid_to_wikimedia_commons={},
             )
         )
-    else:
-        version_info = VERSION_DEFAULT
+        sys.exit(0)
+
+    if ror_version is None:
+        from ror_downloader import get_version_info
+
+        click.echo("Looking up ROR version")
+        ror_version_info = get_version_info(download=False, authenticate_zenodo=False)
+        ror_version = ror_version_info.version
+
+    from .ror import get_ror_grounder
+
+    click.echo(f"Getting ROR v{ror_version}")
+    ror_grounder = get_ror_grounder(version=ror_version)
+    version_info = VERSION_DEFAULT
 
     click.echo(f"Using ORCiD version: {version_info}")
 
@@ -76,6 +108,15 @@ def main(test: bool, ror_version: str | None) -> None:
     res = ground_researcher("CT Hoyt", version_info=version_info)
     delta = time.time() - x
     click.echo(f"Grounded in {delta:.2f} seconds:\n\n{res!r}")
+
+
+@main.command()
+def ground() -> None:
+    from .api import ground_researcher
+
+    version_info = _get_test_version_info()
+    res = ground_researcher("Luana Licata", version_info=version_info)
+    click.echo(f"res: {res}")
 
 
 if __name__ == "__main__":

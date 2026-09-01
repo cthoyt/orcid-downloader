@@ -17,7 +17,7 @@ class TestParse(unittest.TestCase):
 
     def test_parse_works(self) -> None:
         """Test parsing works."""
-        grounder = ssslm.make_grounder([])
+        grounder = ssslm.EmptyGrounder()
         orcid_to_wikimedia_commons: dict[str, str] = {}
         orcid_to_wikidata: dict[str, str] = {}
         with EXAMPLE_PATH.open() as file:
@@ -30,7 +30,7 @@ class TestParse(unittest.TestCase):
                 and work.title
                 == "A review of biomedical datasets relating to drug discovery: "
                 "a knowledge graph perspective"
-                for work in res.works
+                for work in res.works or []
             ),
             msg=f"works:\n\n{res.works}",
         )

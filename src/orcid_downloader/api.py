@@ -153,11 +153,13 @@ EXTERNAL_ID_SKIP = {
     "CTI Vitae": "dead website",
     "Pitt ID": "dead website",
     "VIVO Cornell": "dead website",
+    "VIVO TUCfis": "not handling VIVO",
     "Technical University of Denmark CWIS": "dead website",
     "HKU ResearcherPage": "dead website",
     "Digital Author ID": "DAI is not specific service",
     "Digital Author ID (DAI)": "DAI is not specific service",
     "dai": "DAI is not specific service",
+    "Public Key": "has a DID, not useful",
 }
 EXTERNAL_ID_SKIP = {_norm_key(k): v for k, v in EXTERNAL_ID_SKIP.items()}
 #: Mapping from ORCID keys to Bioregistry prefixes for external IDs
@@ -165,9 +167,13 @@ EXTERNAL_ID_MAPPING = {
     "ResearcherID": "wos.researcher",
     "RID": "wos.researcher",
     "Web of Science Researcher ID": "wos.researcher",
+    "WoS Researcher ID": "wos.researcher",
+    "ID WoS": "wos.researcher",
+    "WoS ID": "wos.researcher",
     "other-id - Web of Science": "wos.researcher",
     "Scopus Author ID": "scopus",
     "Scopus ID": "scopus",
+    "SCOPUS": "scopus",
     "ID de autor de Scopus": "scopus",
     "???person.personsources.scopusauthor???": "scopus",
     "Loop profile": "loop",
@@ -248,7 +254,7 @@ def ensure_summaries(*, version_info: VersionInfo) -> Path:
 class Work(BaseModel):
     """A model representing a creative work."""
 
-    pubmed: str = Field(..., title="PubMed identifier")
+    pubmed: Annotated[str, Field(title="PubMed identifier")]
     title: str | None = None
 
 
@@ -264,10 +270,10 @@ class Affiliation(BaseModel):
     """A model representing an affiliation (either education or employment)."""
 
     name: str
-    start: Date | None = Field(None, title="Start Year")
-    end: Date | None = Field(None, title="End Year")
+    start: Annotated[Date | None, Field(title="Start Year")] = None
+    end: Annotated[Date | None, Field(title="End Year")] = None
     role: str | NamableReference | None = None
-    xrefs: dict[str, str] = Field(default_factory=dict, title="Database Cross-references")
+    xrefs: Annotated[dict[str, str] | None, Field( title="Database Cross-references")] = None
 
     # xrefs includes ror, ringgold, grid, funderregistry, lei
     # LEI see https://www.gleif.org/en/lei-data/gleif-concatenated-file/download-the-concatenated-file
@@ -275,22 +281,24 @@ class Affiliation(BaseModel):
     @property
     def ror(self) -> str | None:
         """Get the affiliation's ROR identifier, if available."""
+        if self.xrefs is None:
+            return None
         return self.xrefs.get("ror")
 
 
 class Record(BaseModel):
     """A model representing a person."""
 
-    orcid: Annotated[str, SemanticField(..., prefix="orcid")]
-    name: str = Field(..., min_length=1)
-    homepage: str | None = Field(None)
-    locale: str | None = Field(None)
+    orcid: Annotated[str, SemanticField(prefix="orcid")]
+    name: Annotated[str, Field(min_length=1)]
+    homepage: str | None = None
+    locale: str | None = None
     countries: list[CountryAlpha2] = Field(
         default_factory=list, description="The ISO 3166-1 alpha-2 country codes (uppercase)"
     )
-    aliases: list[str] = Field(default_factory=list)
-    xrefs: dict[str, str] = Field(default_factory=dict, title="Database Cross-references")
-    works: list[Work] = Field(default_factory=list)
+    aliases: list[str] | None = None
+    xrefs: dict[str, str] | None = None
+    works: list[Work] | None = None
     employments: list[Affiliation] = Field(default_factory=list)
     educations: list[Affiliation] = Field(default_factory=list)
     memberships: list[Affiliation] = Field(default_factory=list)
@@ -311,8 +319,8 @@ class Record(BaseModel):
             return False
         # just see if there's literally anything in there
         return bool(
-            any("ror" in employment.xrefs for employment in self.employments)
-            or any("ror" in education.xrefs for education in self.educations)
+            any(employment.ror for employment in self.employments)
+            or any(education.ror for education in self.educations)
             # or any("ror" in membership.xrefs for membership in self.memberships)
             or self.works
             or self.xrefs
@@ -328,50 +336,55 @@ class Record(BaseModel):
         """Get the first country, if available."""
         return self.countries[0] if self.countries else None
 
+    def _get_xref(self, prefix: str) -> str | None:
+        if self.xrefs is None:
+            return None
+        return self.xrefs.get(prefix)
+
     @property
     def github(self) -> str | None:
         """Get the researcher's GitHub username, if available."""
-        return self.xrefs.get("github")
+        return self._get_xref("github")
 
     @property
     def linkedin(self) -> str | None:
         """Get the researcher's LinkedIn username, if available."""
-        return self.xrefs.get("linkedin")
+        return self._get_xref("linkedin")
 
     @property
     def loop(self) -> str | None:
         """Get the researcher's Loop identifier, if available."""
-        return self.xrefs.get("loop")
+        return self._get_xref("loop")
 
     @property
     def wos(self) -> str | None:
         """Get the researcher's Web of Science identifier, if available."""
-        return self.xrefs.get("wos.researcher")
+        return self._get_xref("wos.researcher")
 
     @property
     def dblp(self) -> str | None:
         """Get the researcher's DBLP identifier, if available."""
-        return self.xrefs.get("dblp")
+        return self._get_xref("dblp")
 
     @property
     def scopus(self) -> str | None:
         """Get the researcher's Scopus identifier, if available."""
-        return self.xrefs.get("scopus")
+        return self._get_xref("scopus")
 
     @property
     def google(self) -> str | None:
         """Get the researcher's Google Scholar identifier, if available."""
-        return self.xrefs.get("google.scholar")
+        return self._get_xref("google.scholar")
 
     @property
     def wikidata(self) -> str | None:
         """Get the researcher's Wikidata identifier, if available."""
-        return self.xrefs.get("wikidata")
+        return self._get_xref("wikidata")
 
     @property
     def mastodon(self) -> str | None:
         """Get the researcher's Mastodon handle, if available."""
-        return self.xrefs.get("mastodon")
+        return self._get_xref("mastodon")
 
     @property
     def current_affiliation_ror(self) -> str | None:
@@ -408,6 +421,8 @@ def iter_records(  # noqa:C901
     head: int | None = None,
     version_info: VersionInfo | None,
     ror_grounder: ssslm.Grounder[curies.NamableReference] | None,
+    orcid_to_wikidata: dict[str, str] | None = None,
+    orcid_to_wikimedia_commons: dict[str, str] | None = None,
 ) -> Iterable[Record]:
     """Parse ORCID summary XML files, takes about an hour."""
     if version_info is None:
@@ -424,18 +439,22 @@ def iter_records(  # noqa:C901
                 yield Record.model_validate_json(line)
 
     else:
-        from orcid_downloader.wikidata import get_orcid_to_commons_image, get_orcid_to_wikidata
-
         if ror_grounder is None:
-            from orcid_downloader.ror import get_ror_grounder
+            from .ror import get_ror_grounder
 
             tqdm.write("getting ROR grounder")
             ror_grounder = get_ror_grounder()
 
-        tqdm.write("getting ORCID to Wikidata mapping")
-        orcid_to_wikidata = get_orcid_to_wikidata()
-        tqdm.write("getting ORCID to Wikimedia commons")
-        orcid_to_wikimedia_commons = get_orcid_to_commons_image()
+        if orcid_to_wikidata is None:
+            from .wikidata import get_orcid_to_wikidata
+
+            tqdm.write("getting ORCID to Wikidata mapping")
+            orcid_to_wikidata = get_orcid_to_wikidata()
+        if orcid_to_wikimedia_commons is None:
+            from .wikidata import get_orcid_to_commons_image
+
+            tqdm.write("getting ORCID to Wikimedia commons")
+            orcid_to_wikimedia_commons = get_orcid_to_commons_image()
         f = partial(
             _process_file,
             ror_grounder=ror_grounder,
@@ -444,6 +463,7 @@ def iter_records(  # noqa:C901
         )
 
         path = ensure_summaries(version_info=version_info)
+        tqdm.write(f"path to TARFILE: {path}")
         it = _iter_tarfile_members(path)
         # TODO use process_map with chunksize=50_000
 
@@ -509,7 +529,7 @@ def _process_file(  # noqa:C901
     orcid_to_wikidata: dict[str, str],
     orcid_to_wikimedia_commons: dict[str, str],
 ) -> Record | None:
-    """Process a file obnect for an XML file.
+    """Process a file object for an XML file.
 
     :param file: An XML file object
     :param ror_grounder: A grounder object for ROR
@@ -1120,7 +1140,7 @@ def write_summaries(  # noqa:C901
                     unstandardized_education_roles[education.role] += 1
                     if education.role not in unstandardized_education_roles_example:
                         unstandardized_education_roles_example[education.role] = record.orcid
-                for k in education.xrefs:
+                for k in education.xrefs or []:
                     affiliation_xrefs_counter[k] += 1
                 if education.ror is None:  # and not grounder.ground(education.name):
                     affiliation_no_ror[education.name] += 1
@@ -1130,7 +1150,7 @@ def write_summaries(  # noqa:C901
             for employment in record.employments:
                 if isinstance(employment.role, str):
                     employment_roles[employment.role] += 1
-                for k in employment.xrefs:
+                for k in employment.xrefs or []:
                     affiliation_xrefs_counter[k] += 1
                 if employment.ror is None:  # and not grounder.ground(education.name):
                     affiliation_no_ror[employment.name] += 1
@@ -1144,7 +1164,7 @@ def write_summaries(  # noqa:C901
                     if membership.name not in affiliation_no_ror_example:
                         affiliation_no_ror_example[membership.name] = record.orcid
 
-            for work in record.works:
+            for work in record.works or []:
                 pubmed = _standardize_pubmed(work.pubmed)
                 if pubmed:
                     pubmeds_writer.writerow((record.orcid, pubmed))

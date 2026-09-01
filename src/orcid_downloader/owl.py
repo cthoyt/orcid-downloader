@@ -151,7 +151,7 @@ def write_owl_rdf(  # noqa:C901
             ror_parts = []
             article_parts = []
             parts = ["a h:", f"l: {_escape(record.name)}"]
-            for alias in record.aliases:
+            for alias in record.aliases or []:
                 parts.append(f"s: {_escape(alias)}")
             for prefix, value in sorted(record.xrefs.items()):
                 if prefix == "mastodon":
@@ -200,7 +200,7 @@ def write_owl_rdf(  # noqa:C901
                 parts.append(f"hp: <{record.homepage}>")
             for keyword in sorted(record.keywords):
                 parts.append(f"k: {_escape(keyword)}")
-            for work in record.works:
+            for work in record.works or []:
                 if work.pubmed not in pmid_written:
                     if work.title:
                         article_parts.append(
