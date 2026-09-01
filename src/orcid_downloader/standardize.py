@@ -16,9 +16,8 @@
 """
 
 from collections import Counter
-from collections.abc import Iterable, Sequence
+from collections.abc import Sequence
 from pathlib import Path
-from typing import cast
 
 import pystow
 import qualo
@@ -266,7 +265,7 @@ def write_role_counters() -> None:
 
 
 def write_counter(
-    counter: Counter[str] | Counter[tuple[str, ...]],
+    counter: Counter[str],
     path: str | Path,
     sep: str | None = None,
     header: Sequence[str] | None = None,
@@ -280,16 +279,8 @@ def write_counter(
     if not key_values:
         return
     with path.open("w") as file:
-        if isinstance(key_values[0][0], tuple):
-            if header is None:
-                pp = (f"key_{i + 1}" for i in range(len(key_values[0][0])))
-                header = (*pp, "count")
-            print(*header, sep=sep, file=file)
-            for key, value in key_values:
-                print(*key, value, sep=sep, file=file)
-        else:
-            if header is None:
-                header = "key", "count"
-            print(*header, sep=sep, file=file)
-            for key, value in cast(Iterable[tuple[str, int]], key_values):
-                print(key, value, sep=sep, file=file)
+        if header is None:
+            header = "key", "count"
+        print(*header, sep=sep, file=file)
+        for key, value in key_values:
+            print(key, value, sep=sep, file=file)
