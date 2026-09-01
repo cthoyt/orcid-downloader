@@ -16,8 +16,9 @@
 """
 
 from collections import Counter
-from collections.abc import Sequence
+from collections.abc import Iterable, Sequence
 from pathlib import Path
+from typing import cast
 
 import pystow
 import qualo
@@ -290,5 +291,5 @@ def write_counter(
             if header is None:
                 header = "key", "count"
             print(*header, sep=sep, file=file)
-            for key, value in key_values:
+            for key, value in cast(Iterable[tuple[str, int]], key_values):
                 print(key, value, sep=sep, file=file)
