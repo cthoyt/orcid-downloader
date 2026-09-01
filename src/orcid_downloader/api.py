@@ -29,14 +29,16 @@ from pystow.utils import safe_open_writer
 from semantic_pydantic import SemanticField
 from tqdm.auto import tqdm
 
-from orcid_downloader.name_utils import clean_name, reconcile_aliases
-from orcid_downloader.standardize import standardize_role, write_role_counters
+from .name_utils import clean_name, reconcile_aliases
+from .standardize import standardize_role, write_role_counters
 
 if TYPE_CHECKING:
     from xml.etree.ElementTree import Element, ElementTree
 
 __all__ = [
+    "VERSION_DEFAULT",
     "Record",
+    "VersionInfo",
     "ensure_summaries",
     "get_records",
     "ground_researcher",
@@ -273,7 +275,7 @@ class Affiliation(BaseModel):
     start: Annotated[Date | None, Field(title="Start Year")] = None
     end: Annotated[Date | None, Field(title="End Year")] = None
     role: str | NamableReference | None = None
-    xrefs: Annotated[dict[str, str] | None, Field( title="Database Cross-references")] = None
+    xrefs: Annotated[dict[str, str] | None, Field(title="Database Cross-references")] = None
 
     # xrefs includes ror, ringgold, grid, funderregistry, lei
     # LEI see https://www.gleif.org/en/lei-data/gleif-concatenated-file/download-the-concatenated-file

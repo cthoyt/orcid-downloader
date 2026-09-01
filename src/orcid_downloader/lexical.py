@@ -21,8 +21,8 @@ from pystow.utils import safe_open_writer
 from ssslm import LiteralMapping, LiteralMappingTuple
 from tqdm import tqdm
 
-from orcid_downloader.api import Record, VersionInfo, _get_output_module, iter_records
-from orcid_downloader.name_utils import name_to_synonyms
+from .api import Record, VersionInfo, _get_output_module, iter_records
+from .name_utils import name_to_synonyms
 
 __all__ = [
     "get_orcid_grounder",

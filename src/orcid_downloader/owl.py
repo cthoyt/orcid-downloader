@@ -11,7 +11,7 @@ import pyobo
 import ssslm
 from tqdm import tqdm
 
-from orcid_downloader.api import VERSION_DEFAULT, VersionInfo, _get_output_module, iter_records
+from .api import VERSION_DEFAULT, VersionInfo, _get_output_module, iter_records
 
 __all__ = [
     "write_owl_rdf",

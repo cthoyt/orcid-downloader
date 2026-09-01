@@ -5,11 +5,34 @@ from pathlib import Path
 
 import ssslm
 
-from orcid_downloader.api import _process_file
+from orcid_downloader.api import Record, _process_file
+from orcid_downloader.client import _get
 from orcid_downloader.name_utils import clean_name
 
 HERE = Path(__file__).parent.resolve()
-EXAMPLE_PATH = HERE.joinpath("example.xml")
+EXAMPLE_DIRECTORY = HERE.joinpath("examples")
+
+
+def ensure_example(orcid: str) -> Path:
+    """Ensure an example file exists."""
+    path = EXAMPLE_DIRECTORY.joinpath(orcid).with_suffix(".xml")
+    if path.is_file():
+        return path
+    data = _get(orcid, format="xml")
+    path.write_text(data.text)
+    return path
+
+
+def parse(orcid: str) -> Record:
+    """Parse an example."""
+    grounder = ssslm.EmptyGrounder()
+    orcid_to_wikimedia_commons: dict[str, str] = {}
+    orcid_to_wikidata: dict[str, str] = {}
+    with ensure_example(orcid).open() as file:
+        res = _process_file(file, grounder, orcid_to_wikidata, orcid_to_wikimedia_commons)
+    if res is None:
+        raise ValueError
+    return res
 
 
 class TestParse(unittest.TestCase):
@@ -17,13 +40,7 @@ class TestParse(unittest.TestCase):
 
     def test_parse_works(self) -> None:
         """Test parsing works."""
-        grounder = ssslm.EmptyGrounder()
-        orcid_to_wikimedia_commons: dict[str, str] = {}
-        orcid_to_wikidata: dict[str, str] = {}
-        with EXAMPLE_PATH.open() as file:
-            res = _process_file(file, grounder, orcid_to_wikidata, orcid_to_wikimedia_commons)
-        if res is None:
-            self.fail()
+        res = parse("0000-0003-4423-4370")
         self.assertTrue(
             any(
                 work.pubmed == "36151740"
@@ -34,6 +51,12 @@ class TestParse(unittest.TestCase):
             ),
             msg=f"works:\n\n{res.works}",
         )
+
+    def test_linkedin_params_garbage(self) -> None:
+        """Test parsing garbage."""
+        # before linkedin:amir-arsalan-ghahari-101019364?trk=contact-info
+        res = parse("0009-0005-6476-5998")
+        self.assertEqual("amir-arsalan-ghahari-101019364", res.linkedin)
 
     def test_clean_names(self) -> None:
         """Test cleaning names."""

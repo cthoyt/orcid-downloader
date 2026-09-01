@@ -14,7 +14,7 @@ from pydantic_extra_types.country import CountryAlpha2
 from semantic_pydantic import SemanticField
 from tqdm import tqdm
 
-from orcid_downloader.api import VersionInfo, _get_output_module, iter_records
+from .api import VersionInfo, _get_output_module, iter_records
 
 __all__ = [
     "Metadata",
