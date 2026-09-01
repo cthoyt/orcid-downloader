@@ -1,18 +1,18 @@
 """Standardization of academic degrees and organizational roles.
 
 1. https://degree.studentnews.eu lists degrees conferred in the EU/Europe
-2. https://github.com/vivo-ontologies/academic-degree-ontology is an incomplete/abandoned
-   effort from 2020 to ontologize degree names
+2. https://github.com/vivo-ontologies/academic-degree-ontology is an
+   incomplete/abandoned effort from 2020 to ontologize degree names
 3. Wikidata has a class for academic degree https://www.wikidata.org/wiki/Q189533. Its
-   `SPARQL query service <https://query.wikidata.org>`_ can be queried with the following,
-   though note that the Wikidata class hierarchy is broken in several places.
+   `SPARQL query service <https://query.wikidata.org>`_ can be queried with the
+   following, though note that the Wikidata class hierarchy is broken in several places.
 
    .. code-block:: sparql
 
-      SELECT ?item ?itemLabel WHERE {
-         ?item wdt:P279* wd:Q189533 .
-         SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
-       }
+       SELECT ?item ?itemLabel WHERE {
+          ?item wdt:P279* wd:Q189533 .
+          SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+        }
 """
 
 from collections import Counter
@@ -265,7 +265,7 @@ def write_role_counters() -> None:
 
 
 def write_counter(
-    counter: Counter[str] | Counter[tuple[str, ...]],
+    counter: Counter[str],
     path: str | Path,
     sep: str | None = None,
     header: Sequence[str] | None = None,
@@ -279,16 +279,8 @@ def write_counter(
     if not key_values:
         return
     with path.open("w") as file:
-        if isinstance(key_values[0][0], tuple):
-            if header is None:
-                pp = (f"key_{i + 1}" for i in range(len(key_values[0][0])))
-                header = (*pp, "count")
-            print(*header, sep=sep, file=file)
-            for key, value in key_values:
-                print(*key, value, sep=sep, file=file)
-        else:
-            if header is None:
-                header = "key", "count"
-            print(*header, sep=sep, file=file)
-            for key, value in key_values:  # type:ignore[assignment]
-                print(key, value, sep=sep, file=file)
+        if header is None:
+            header = "key", "count"
+        print(*header, sep=sep, file=file)
+        for key, value in key_values:
+            print(key, value, sep=sep, file=file)

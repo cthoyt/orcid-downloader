@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 from typing import cast
 
 import pystow
@@ -12,6 +13,8 @@ __all__ = [
     "get_orcid_to_commons_image",
     "get_orcid_to_wikidata",
 ]
+
+logger = logging.getLogger(__name__)
 
 IMAGE_PATH = pystow.join("orcid", name="orcid_to_image.csv")
 QLEVER = "https://qlever.dev/api/wikidata"
@@ -35,7 +38,9 @@ WHERE { ?orcid ^wdt:P496/wdt:P18 ?image . }
 
 def get_orcid_to_wikidata() -> dict[str, str]:
     """Get all ORCID to wikidata mappings."""
+    logger.info("getting ORCID to wikidata mappings")
     records = wikidata_client.query(ORCID_TO_WIKIDATA, endpoint=QLEVER)
+    logger.info("got ORCID to wikidata mappings")
     return {record["orcid"]: record["item"] for record in records}
 
 
@@ -48,12 +53,14 @@ def get_orcid_to_commons_image() -> dict[str, str]:
         with IMAGE_PATH.open() as file:
             return cast(dict[str, str], json.load(file))
 
+    logger.info("getting ORCID to Wikimedia commons mappings")
     # ran on web in 43,678 ms, but for some reason stalls out when run this way
     records = wikidata_client.query(
         ORCID_TO_IMAGE_SPARQL,
         timeout=60 * 5,
         endpoint=QLEVER,
     )
+    logger.info("got ORCID to Wikimedia commons mappings")
     rv = {record["orcid"]: record["image"].removeprefix(IMAGE_URL_PREFIX) for record in records}
 
     with IMAGE_PATH.open("w") as file:

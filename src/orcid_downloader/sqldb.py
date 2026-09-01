@@ -14,7 +14,7 @@ from pydantic_extra_types.country import CountryAlpha2
 from semantic_pydantic import SemanticField
 from tqdm import tqdm
 
-from orcid_downloader.api import VersionInfo, _get_output_module, iter_records
+from .api import VersionInfo, _get_output_module, iter_records
 
 __all__ = [
     "Metadata",
@@ -92,7 +92,7 @@ def write_sqlite(
                 record.wikidata,
                 record.mastodon,
                 record.commons_image,
-                len(record.works),
+                len(record.works or []),
             )
             for record in iter_records(
                 desc="Writing SQL database",
@@ -155,7 +155,7 @@ def write_sqlite(
 class Organization(BaseModel):
     """A model representing an organization."""
 
-    ror: Annotated[str, SemanticField(..., prefix="ror")]
+    ror: Annotated[str, SemanticField(prefix="ror")]
     name: str
     country: str
 
@@ -163,20 +163,20 @@ class Organization(BaseModel):
 class Metadata(BaseModel):
     """A model representing the metadata associated with a researcher."""
 
-    orcid: Annotated[str, SemanticField(..., prefix="orcid")]
+    orcid: Annotated[str, SemanticField(prefix="orcid")]
     name: str
     country: CountryAlpha2 | None = None
     locale: str | None = None
     organization: Organization | None = None
     email: str | None = None
     homepage: str | None = None
-    github: Annotated[str | None, SemanticField(None, prefix="github")]
-    wos: Annotated[str | None, SemanticField(None, prefix="wos.researcher")]
-    dblp: Annotated[str | None, SemanticField(None, prefix="dblp.author")]
-    scopus: Annotated[str | None, SemanticField(None, prefix="scopus")]
-    google: Annotated[str | None, SemanticField(None, prefix="google.scholar")]
+    github: Annotated[str | None, SemanticField(prefix="github")] = None
+    wos: Annotated[str | None, SemanticField(prefix="wos.researcher")] = None
+    dblp: Annotated[str | None, SemanticField(prefix="dblp.author")] = None
+    scopus: Annotated[str | None, SemanticField(prefix="scopus")] = None
+    google: Annotated[str | None, SemanticField(prefix="google.scholar")] = None
     linkedin: str | None = None
-    wikidata: Annotated[str | None, SemanticField(None, prefix="wikidata")]
+    wikidata: Annotated[str | None, SemanticField(prefix="wikidata")] = None
     mastodon: str | None = None
     commons_image: str | None = None
 

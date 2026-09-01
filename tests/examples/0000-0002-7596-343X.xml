@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<record:record path="/0000-0002-7596-343X" xmlns:internal="http://www.orcid.org/ns/internal" xmlns:education="http://www.orcid.org/ns/education" xmlns:distinction="http://www.orcid.org/ns/distinction" xmlns:deprecated="http://www.orcid.org/ns/deprecated" xmlns:other-name="http://www.orcid.org/ns/other-name" xmlns:membership="http://www.orcid.org/ns/membership" xmlns:error="http://www.orcid.org/ns/error" xmlns:common="http://www.orcid.org/ns/common" xmlns:record="http://www.orcid.org/ns/record" xmlns:personal-details="http://www.orcid.org/ns/personal-details" xmlns:keyword="http://www.orcid.org/ns/keyword" xmlns:email="http://www.orcid.org/ns/email" xmlns:external-identifier="http://www.orcid.org/ns/external-identifier" xmlns:funding="http://www.orcid.org/ns/funding" xmlns:preferences="http://www.orcid.org/ns/preferences" xmlns:address="http://www.orcid.org/ns/address" xmlns:invited-position="http://www.orcid.org/ns/invited-position" xmlns:work="http://www.orcid.org/ns/work" xmlns:history="http://www.orcid.org/ns/history" xmlns:employment="http://www.orcid.org/ns/employment" xmlns:qualification="http://www.orcid.org/ns/qualification" xmlns:service="http://www.orcid.org/ns/service" xmlns:person="http://www.orcid.org/ns/person" xmlns:activities="http://www.orcid.org/ns/activities" xmlns:researcher-url="http://www.orcid.org/ns/researcher-url" xmlns:peer-review="http://www.orcid.org/ns/peer-review" xmlns:bulk="http://www.orcid.org/ns/bulk" xmlns:research-resource="http://www.orcid.org/ns/research-resource">
+    <common:orcid-identifier>
+        <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+        <common:path>0000-0002-7596-343X</common:path>
+        <common:host>orcid.org</common:host>
+    </common:orcid-identifier>
+    <preferences:preferences>
+        <preferences:locale>en</preferences:locale>
+    </preferences:preferences>
+    <history:history>
+        <history:creation-method>Direct</history:creation-method>
+        <history:submission-date>2022-08-03T06:38:21.721Z</history:submission-date>
+        <common:last-modified-date>2026-05-22T14:08:34.411Z</common:last-modified-date>
+        <history:claimed>true</history:claimed>
+        <history:verified-email>true</history:verified-email>
+        <history:verified-primary-email>true</history:verified-primary-email>
+    </history:history>
+    <person:person path="/0000-0002-7596-343X/person">
+        <common:last-modified-date>2026-05-22T14:08:34.406Z</common:last-modified-date>
+        <person:name visibility="public" path="0000-0002-7596-343X">
+            <common:created-date>2022-08-03T06:38:21.963Z</common:created-date>
+            <common:last-modified-date>2026-05-22T14:07:27.136Z</common:last-modified-date>
+            <personal-details:given-names>Hussain Arif</personal-details:given-names>
+            <personal-details:credit-name>Dr. Hussain Arif</personal-details:credit-name>
+        </person:name>
+        <other-name:other-names path="/0000-0002-7596-343X/other-names"/>
+        <researcher-url:researcher-urls path="/0000-0002-7596-343X/researcher-urls"/>
+        <email:emails path="/0000-0002-7596-343X/email"/>
+        <address:addresses path="/0000-0002-7596-343X/address">
+            <common:last-modified-date>2026-05-22T14:08:34.406Z</common:last-modified-date>
+            <address:address put-code="4211380" visibility="public" path="/0000-0002-7596-343X/address/4211380" display-index="1">
+                <common:created-date>2026-05-22T14:08:34.406Z</common:created-date>
+                <common:last-modified-date>2026-05-22T14:08:34.406Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                        <common:path>0000-0002-7596-343X</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>Dr. Hussain Arif</common:source-name>
+                </common:source>
+                <address:country>IN</address:country>
+            </address:address>
+        </address:addresses>
+        <keyword:keywords path="/0000-0002-7596-343X/keywords">
+            <common:last-modified-date>2026-05-22T14:08:14.724Z</common:last-modified-date>
+            <keyword:keyword put-code="2625022" visibility="public" path="/0000-0002-7596-343X/keywords/2625022" display-index="5">
+                <common:created-date>2022-08-03T07:13:53.917Z</common:created-date>
+                <common:last-modified-date>2026-05-22T14:08:14.724Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                        <common:path>0000-0002-7596-343X</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>Dr. Hussain Arif</common:source-name>
+                </common:source>
+                <keyword:content>antioxidant</keyword:content>
+            </keyword:keyword>
+            <keyword:keyword put-code="2625026" visibility="public" path="/0000-0002-7596-343X/keywords/2625026" display-index="4">
+                <common:created-date>2022-08-03T07:14:42.607Z</common:created-date>
+                <common:last-modified-date>2026-05-22T14:08:14.724Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                        <common:path>0000-0002-7596-343X</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>Dr. Hussain Arif</common:source-name>
+                </common:source>
+                <keyword:content>Copper</keyword:content>
+            </keyword:keyword>
+            <keyword:keyword put-code="2625025" visibility="public" path="/0000-0002-7596-343X/keywords/2625025" display-index="3">
+                <common:created-date>2022-08-03T07:14:42.605Z</common:created-date>
+                <common:last-modified-date>2026-05-22T14:08:14.724Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                        <common:path>0000-0002-7596-343X</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>Dr. Hussain Arif</common:source-name>
+                </common:source>
+                <keyword:content>Free radicals</keyword:content>
+            </keyword:keyword>
+            <keyword:keyword put-code="2625027" visibility="public" path="/0000-0002-7596-343X/keywords/2625027" display-index="2">
+                <common:created-date>2022-08-03T07:15:00.573Z</common:created-date>
+                <common:last-modified-date>2026-05-22T14:08:14.724Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                        <common:path>0000-0002-7596-343X</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>Dr. Hussain Arif</common:source-name>
+                </common:source>
+                <keyword:content>Cancer</keyword:content>
+            </keyword:keyword>
+            <keyword:keyword put-code="5456724" visibility="public" path="/0000-0002-7596-343X/keywords/5456724" display-index="1">
+                <common:created-date>2026-05-22T14:08:14.712Z</common:created-date>
+                <common:last-modified-date>2026-05-22T14:08:14.712Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                        <common:path>0000-0002-7596-343X</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>Dr. Hussain Arif</common:source-name>
+                </common:source>
+                <keyword:content>Toxicology</keyword:content>
+            </keyword:keyword>
+        </keyword:keywords>
+        <external-identifier:external-identifiers path="/0000-0002-7596-343X/external-identifiers"/>
+    </person:person>
+    <activities:activities-summary path="/0000-0002-7596-343X/activities">
+        <common:last-modified-date>2026-05-22T14:05:32.145Z</common:last-modified-date>
+        <activities:distinctions path="/0000-0002-7596-343X/distinctions"/>
+        <activities:educations path="/0000-0002-7596-343X/educations">
+            <common:last-modified-date>2026-05-22T14:05:32.145Z</common:last-modified-date>
+            <activities:affiliation-group>
+                <common:last-modified-date>2026-05-22T14:05:32.145Z</common:last-modified-date>
+                <common:external-ids/>
+                <education:education-summary put-code="18190559" display-index="0" path="/0000-0002-7596-343X/education/18190559" visibility="public">
+                    <common:created-date>2022-08-03T06:42:43.665Z</common:created-date>
+                    <common:last-modified-date>2026-05-22T14:05:32.145Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <common:department-name>Biochemistry</common:department-name>
+                    <common:role-title>Doctorate</common:role-title>
+                    <common:start-date>
+                        <common:year>2012</common:year>
+                    </common:start-date>
+                    <common:end-date>
+                        <common:year>2017</common:year>
+                    </common:end-date>
+                    <common:organization>
+                        <common:name>Aligarh Muslim University Faculty of Life Sciences</common:name>
+                        <common:address>
+                            <common:city>Aligarh</common:city>
+                            <common:region>Uttar Pradesh</common:region>
+                            <common:country>IN</common:country>
+                        </common:address>
+                        <common:disambiguated-organization>
+                            <common:disambiguated-organization-identifier>154014</common:disambiguated-organization-identifier>
+                            <common:disambiguation-source>RINGGOLD</common:disambiguation-source>
+                        </common:disambiguated-organization>
+                    </common:organization>
+                </education:education-summary>
+            </activities:affiliation-group>
+        </activities:educations>
+        <activities:employments path="/0000-0002-7596-343X/employments">
+            <common:last-modified-date>2026-05-22T14:04:29.571Z</common:last-modified-date>
+            <activities:affiliation-group>
+                <common:last-modified-date>2026-05-22T14:04:29.571Z</common:last-modified-date>
+                <common:external-ids/>
+                <employment:employment-summary put-code="18190550" display-index="0" path="/0000-0002-7596-343X/employment/18190550" visibility="public">
+                    <common:created-date>2022-08-03T06:41:02.623Z</common:created-date>
+                    <common:last-modified-date>2026-05-22T14:04:29.571Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <common:department-name>Biochemistry</common:department-name>
+                    <common:role-title>Assistant Professor</common:role-title>
+                    <common:start-date>
+                        <common:year>2017</common:year>
+                        <common:month>09</common:month>
+                    </common:start-date>
+                    <common:end-date>
+                        <common:year>2023</common:year>
+                        <common:month>01</common:month>
+                    </common:end-date>
+                    <common:organization>
+                        <common:name>Mohammad Ali Jauhar University</common:name>
+                        <common:address>
+                            <common:city>Rampur</common:city>
+                            <common:region>Uttar Pradesh</common:region>
+                            <common:country>IN</common:country>
+                        </common:address>
+                        <common:disambiguated-organization>
+                            <common:disambiguated-organization-identifier>https://ror.org/04jq39t97</common:disambiguated-organization-identifier>
+                            <common:disambiguation-source>ROR</common:disambiguation-source>
+                        </common:disambiguated-organization>
+                    </common:organization>
+                </employment:employment-summary>
+            </activities:affiliation-group>
+        </activities:employments>
+        <activities:fundings path="/0000-0002-7596-343X/fundings"/>
+        <activities:invited-positions path="/0000-0002-7596-343X/invited-positions"/>
+        <activities:memberships path="/0000-0002-7596-343X/memberships"/>
+        <activities:peer-reviews path="/0000-0002-7596-343X/peer-reviews"/>
+        <activities:qualifications path="/0000-0002-7596-343X/qualifications">
+            <common:last-modified-date>2022-08-03T06:43:33.345Z</common:last-modified-date>
+            <activities:affiliation-group>
+                <common:last-modified-date>2022-08-03T06:43:33.345Z</common:last-modified-date>
+                <common:external-ids/>
+                <qualification:qualification-summary put-code="18190565" display-index="1" path="/0000-0002-7596-343X/qualification/18190565" visibility="public">
+                    <common:created-date>2022-08-03T06:43:33.345Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T06:43:33.345Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <common:organization>
+                        <common:name>Aligarh Muslim University</common:name>
+                        <common:address>
+                            <common:city>Aligarh</common:city>
+                            <common:region>Uttar Pradesh</common:region>
+                            <common:country>IN</common:country>
+                        </common:address>
+                        <common:disambiguated-organization>
+                            <common:disambiguated-organization-identifier>https://ror.org/03kw9gc02</common:disambiguated-organization-identifier>
+                            <common:disambiguation-source>ROR</common:disambiguation-source>
+                        </common:disambiguated-organization>
+                    </common:organization>
+                </qualification:qualification-summary>
+            </activities:affiliation-group>
+        </activities:qualifications>
+        <activities:research-resources path="/0000-0002-7596-343X/research-resources"/>
+        <activities:services path="/0000-0002-7596-343X/services"/>
+        <activities:works path="/0000-0002-7596-343X/works">
+            <common:last-modified-date>2022-08-03T07:12:09.849Z</common:last-modified-date>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:10:20.389Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.ijbiomac.2022.02.093</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.ijbiomac.2022.02.093</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.ijbiomac.2022.02.093</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116734390" path="/0000-0002-7596-343X/work/116734390" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:10:20.389Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:10:20.389Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Glyoxal induced glycative insult suffered by immunoglobulin G and fibrinogen proteins: A comparative physicochemical characterization to reveal structural perturbations</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.ijbiomac.2022.02.093</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.ijbiomac.2022.02.093</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.ijbiomac.2022.02.093</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0141-8130</common:external-id-value>
+                            <common:external-id-normalized transient="true">0141-8130</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0141-8130</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.ijbiomac.2022.02.093</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2022</common:year>
+                        <common:month>04</common:month>
+                    </common:publication-date>
+                    <work:journal-title>International Journal of Biological Macromolecules</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:11:34.238Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.4103/ajns.ajns_173_16</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.4103/ajns.ajns_173_16</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.4103/ajns.ajns_173_16</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116734461" path="/0000-0002-7596-343X/work/116734461" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:11:34.238Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:11:34.238Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>The description of urodynamic study for bladder dysfunction in compressive myelo- or radiculo-pathy: A prospective study in an institutional setup</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.4103/ajns.ajns_173_16</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.4103/ajns.ajns_173_16</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.4103/ajns.ajns_173_16</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>1793-5482</common:external-id-value>
+                            <common:external-id-normalized transient="true">1793-5482</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/1793-5482</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.4103/ajns.ajns_173_16</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2019</common:year>
+                    </common:publication-date>
+                    <work:journal-title>Asian Journal of Neurosurgery</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:07:43.755Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1002/tox.22624</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1002/tox.22624</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1002/tox.22624</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116734332" path="/0000-0002-7596-343X/work/116734332" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:07:43.755Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:07:43.755Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Acute renal toxicity of sodium chlorate: Redox imbalance, enhanced DNA damage, metabolic alterations and inhibition of brush border membrane enzymes in rats</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1002/tox.22624</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1002/tox.22624</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1002/tox.22624</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>1520-4081</common:external-id-value>
+                            <common:external-id-normalized transient="true">1520-4081</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/1520-4081</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1002/tox.22624</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2018</common:year>
+                        <common:month>11</common:month>
+                    </common:publication-date>
+                    <work:journal-title>Environmental Toxicology</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:12:09.849Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.bbapap.2018.06.006</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.bbapap.2018.06.006</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.bbapap.2018.06.006</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116734475" path="/0000-0002-7596-343X/work/116734475" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:12:09.849Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:12:09.849Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Glycation induced conformational transitions in cystatin proceed to form biotoxic aggregates: A multidimensional analysis</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.bbapap.2018.06.006</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.bbapap.2018.06.006</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.bbapap.2018.06.006</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>1570-9639</common:external-id-value>
+                            <common:external-id-normalized transient="true">1570-9639</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/1570-9639</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.bbapap.2018.06.006</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2018</common:year>
+                        <common:month>09</common:month>
+                    </common:publication-date>
+                    <work:journal-title>Biochimica et Biophysica Acta (BBA) - Proteins and Proteomics</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T06:59:31.832Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.ijbiomac.2017.08.049</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.ijbiomac.2017.08.049</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.ijbiomac.2017.08.049</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116733332" path="/0000-0002-7596-343X/work/116733332" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T06:51:26.430Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T06:51:26.430Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Flavonoids-induced redox cycling of copper ions leads to generation of reactive oxygen species: A potential role in cancer chemoprevention</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.ijbiomac.2017.08.049</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.ijbiomac.2017.08.049</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.ijbiomac.2017.08.049</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0141-8130</common:external-id-value>
+                            <common:external-id-normalized transient="true">0141-8130</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0141-8130</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.ijbiomac.2017.08.049</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2018</common:year>
+                        <common:month>01</common:month>
+                    </common:publication-date>
+                    <work:journal-title>International Journal of Biological Macromolecules</work:journal-title>
+                </work:work-summary>
+                <work:work-summary put-code="116733694" path="/0000-0002-7596-343X/work/116733694" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T06:59:31.832Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T06:59:31.832Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Flavonoids-induced redox cycling of copper ions leads to generation of reactive oxygen species: A potential role in cancer chemoprevention</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.ijbiomac.2017.08.049</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.ijbiomac.2017.08.049</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.ijbiomac.2017.08.049</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0141-8130</common:external-id-value>
+                            <common:external-id-normalized transient="true">0141-8130</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0141-8130</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.ijbiomac.2017.08.049</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2018</common:year>
+                        <common:month>01</common:month>
+                    </common:publication-date>
+                    <work:journal-title>International Journal of Biological Macromolecules</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:09:33.671Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.molstruc.2017.05.034</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.molstruc.2017.05.034</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.molstruc.2017.05.034</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116734373" path="/0000-0002-7596-343X/work/116734373" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:09:33.671Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:09:33.671Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Spectroscopic and thermodynamic studies on ferulic acid – Alpha-2-macroglobulin interaction</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.molstruc.2017.05.034</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.molstruc.2017.05.034</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.molstruc.2017.05.034</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0022-2860</common:external-id-value>
+                            <common:external-id-normalized transient="true">0022-2860</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0022-2860</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.molstruc.2017.05.034</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2017</common:year>
+                        <common:month>09</common:month>
+                    </common:publication-date>
+                    <work:journal-title>Journal of Molecular Structure</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:08:49.304Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.chemosphere.2017.03.018</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.chemosphere.2017.03.018</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.chemosphere.2017.03.018</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116734362" path="/0000-0002-7596-343X/work/116734362" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:08:49.304Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:08:49.304Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Sodium chlorate induces DNA damage and DNA-protein cross-linking in rat intestine: A dose dependent study</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.chemosphere.2017.03.018</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.chemosphere.2017.03.018</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.chemosphere.2017.03.018</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0045-6535</common:external-id-value>
+                            <common:external-id-normalized transient="true">0045-6535</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0045-6535</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.chemosphere.2017.03.018</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2017</common:year>
+                        <common:month>06</common:month>
+                    </common:publication-date>
+                    <work:journal-title>Chemosphere</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:00:54.575Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1371/journal.pone.0175196</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1371/journal.pone.0175196</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1371/journal.pone.0175196</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116733735" path="/0000-0002-7596-343X/work/116733735" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:00:54.575Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:00:54.575Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Acute oral dose of sodium nitrite induces redox imbalance, DNA damage, metabolic and histological changes in rat intestine</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1371/journal.pone.0175196</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1371/journal.pone.0175196</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1371/journal.pone.0175196</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>1932-6203</common:external-id-value>
+                            <common:external-id-normalized transient="true">1932-6203</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/1932-6203</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1371/journal.pone.0175196</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2017</common:year>
+                        <common:month>04</common:month>
+                        <common:day>06</common:day>
+                    </common:publication-date>
+                    <work:journal-title>PLOS ONE</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:04:29.467Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.tiv.2017.01.020</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.tiv.2017.01.020</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.tiv.2017.01.020</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116733919" path="/0000-0002-7596-343X/work/116733919" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:04:29.467Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:04:29.467Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Copper-mediated DNA damage by the neurotransmitter dopamine and L-DOPA: A pro-oxidant mechanism</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.tiv.2017.01.020</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.tiv.2017.01.020</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.tiv.2017.01.020</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0887-2333</common:external-id-value>
+                            <common:external-id-normalized transient="true">0887-2333</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0887-2333</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.tiv.2017.01.020</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2017</common:year>
+                        <common:month>04</common:month>
+                    </common:publication-date>
+                    <work:journal-title>Toxicology in Vitro</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:05:11.143Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.ijbiomac.2016.10.095</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.ijbiomac.2016.10.095</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.ijbiomac.2016.10.095</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116733977" path="/0000-0002-7596-343X/work/116733977" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:05:11.143Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:05:11.143Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Deciphering the interaction of bovine heart cystatin with ZnO nanoparticles: Spectroscopic and thermodynamic approach</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.ijbiomac.2016.10.095</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.ijbiomac.2016.10.095</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.ijbiomac.2016.10.095</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0141-8130</common:external-id-value>
+                            <common:external-id-normalized transient="true">0141-8130</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0141-8130</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.ijbiomac.2016.10.095</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2017</common:year>
+                        <common:month>02</common:month>
+                    </common:publication-date>
+                    <work:journal-title>International Journal of Biological Macromolecules</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T06:57:32.712Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.3390/toxins8020037</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.3390/toxins8020037</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.3390/toxins8020037</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116733611" path="/0000-0002-7596-343X/work/116733611" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T06:57:32.712Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T06:57:32.712Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Cancer Therapy by Catechins Involves Redox Cycling of Copper Ions and Generation of Reactive Oxygen Species</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.3390/toxins8020037</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.3390/toxins8020037</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.3390/toxins8020037</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>2072-6651</common:external-id-value>
+                            <common:external-id-normalized transient="true">2072-6651</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/2072-6651</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.3390/toxins8020037</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2016</common:year>
+                        <common:month>02</common:month>
+                        <common:day>04</common:day>
+                    </common:publication-date>
+                    <work:journal-title>Toxins</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:03:43.228Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.3390/ijms161125992</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.3390/ijms161125992</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.3390/ijms161125992</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116733884" path="/0000-0002-7596-343X/work/116733884" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:03:43.228Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:03:43.228Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Mobilization of Copper ions by Flavonoids in Human Peripheral Lymphocytes Leads to Oxidative DNA Breakage: A Structure Activity Study</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.3390/ijms161125992</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.3390/ijms161125992</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.3390/ijms161125992</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>1422-0067</common:external-id-value>
+                            <common:external-id-normalized transient="true">1422-0067</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/1422-0067</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.3390/ijms161125992</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2015</common:year>
+                        <common:month>11</common:month>
+                        <common:day>09</common:day>
+                    </common:publication-date>
+                    <work:journal-title>International Journal of Molecular Sciences</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+            <activities:group>
+                <common:last-modified-date>2022-08-03T07:05:54.720Z</common:last-modified-date>
+                <common:external-ids>
+                    <common:external-id>
+                        <common:external-id-type>doi</common:external-id-type>
+                        <common:external-id-value>10.1016/j.abb.2015.06.019</common:external-id-value>
+                        <common:external-id-normalized transient="true">10.1016/j.abb.2015.06.019</common:external-id-normalized>
+                        <common:external-id-url>https://doi.org/10.1016/j.abb.2015.06.019</common:external-id-url>
+                        <common:external-id-relationship>self</common:external-id-relationship>
+                    </common:external-id>
+                </common:external-ids>
+                <work:work-summary put-code="116733993" path="/0000-0002-7596-343X/work/116733993" visibility="public" display-index="1">
+                    <common:created-date>2022-08-03T07:05:54.720Z</common:created-date>
+                    <common:last-modified-date>2022-08-03T07:05:54.720Z</common:last-modified-date>
+                    <common:source>
+                        <common:source-orcid>
+                            <common:uri>https://orcid.org/0000-0002-7596-343X</common:uri>
+                            <common:path>0000-0002-7596-343X</common:path>
+                            <common:host>orcid.org</common:host>
+                        </common:source-orcid>
+                        <common:source-name>Dr. Hussain Arif</common:source-name>
+                    </common:source>
+                    <work:title>
+                        <common:title>Mobilization of copper ions in human peripheral lymphocytes by catechins leading to oxidative DNA breakage: A structure activity study</common:title>
+                    </work:title>
+                    <common:external-ids>
+                        <common:external-id>
+                            <common:external-id-type>doi</common:external-id-type>
+                            <common:external-id-value>10.1016/j.abb.2015.06.019</common:external-id-value>
+                            <common:external-id-normalized transient="true">10.1016/j.abb.2015.06.019</common:external-id-normalized>
+                            <common:external-id-url>https://doi.org/10.1016/j.abb.2015.06.019</common:external-id-url>
+                            <common:external-id-relationship>self</common:external-id-relationship>
+                        </common:external-id>
+                        <common:external-id>
+                            <common:external-id-type>issn</common:external-id-type>
+                            <common:external-id-value>0003-9861</common:external-id-value>
+                            <common:external-id-normalized transient="true">0003-9861</common:external-id-normalized>
+                            <common:external-id-url>https://portal.issn.org/resource/ISSN/0003-9861</common:external-id-url>
+                            <common:external-id-relationship>part-of</common:external-id-relationship>
+                        </common:external-id>
+                    </common:external-ids>
+                    <common:url>http://dx.doi.org/10.1016/j.abb.2015.06.019</common:url>
+                    <work:type>journal-article</work:type>
+                    <common:publication-date>
+                        <common:year>2015</common:year>
+                        <common:month>08</common:month>
+                    </common:publication-date>
+                    <work:journal-title>Archives of Biochemistry and Biophysics</work:journal-title>
+                </work:work-summary>
+            </activities:group>
+        </activities:works>
+    </activities:activities-summary>
+</record:record>

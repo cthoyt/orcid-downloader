@@ -50,12 +50,12 @@ requires-python = ">=3.11"
 dependencies = [
     "tqdm",
     "lxml",
-    "pystow",
+    "pystow>=0.9.0",
     "ror-downloader",
     "pydantic",
     "pydantic-extra-types[pycountry]",
     "semantic-pydantic",
-    "bioregistry>=0.11.13",
+    "bioregistry>=0.14.0",
     "qualo>=0.0.2",
     "wikidata-client",
     "more-itertools",
@@ -104,12 +104,12 @@ pyroma = [
 [project.optional-dependencies]
 process = [
     "pyobo>=0.12.15",
-    "ssslm[gilda-slim]>=0.2.1",
+    "ssslm[gilda-slim]>=0.3.0",
     "gilda-slim>=1.4.1.1",
     "tabulate",
 ]
 autocomplete = [
-    "ssslm[gilda-slim]",
+    "ssslm[gilda-slim]>=0.3.0",
     "fastapi",
 ]
 

@@ -11,7 +11,7 @@ import pyobo
 import ssslm
 from tqdm import tqdm
 
-from orcid_downloader.api import VERSION_DEFAULT, VersionInfo, _get_output_module, iter_records
+from .api import VERSION_DEFAULT, VersionInfo, _get_output_module, iter_records
 
 __all__ = [
     "write_owl_rdf",
@@ -151,18 +151,19 @@ def write_owl_rdf(  # noqa:C901
             ror_parts = []
             article_parts = []
             parts = ["a h:", f"l: {_escape(record.name)}"]
-            for alias in record.aliases:
+            for alias in record.aliases or []:
                 parts.append(f"s: {_escape(alias)}")
-            for prefix, value in sorted(record.xrefs.items()):
-                if prefix == "mastodon":
-                    continue
-                elif _bad_luid(value):
-                    tqdm.write(f"[orcid:{record.orcid}] had invalid xref: {prefix}:{value}")
-                else:
-                    parts.append(f"x: {prefix}:{value}")
+            if record.xrefs is not None:
+                for prefix, value in sorted(record.xrefs.items()):
+                    if prefix == "mastodon":
+                        continue
+                    elif _bad_luid(value):
+                        tqdm.write(f"[orcid:{record.orcid}] had invalid xref: {prefix}:{value}")
+                    else:
+                        parts.append(f"x: {prefix}:{value}")
             if record.commons_image:
                 parts.append(f"db: <{record.commons_image_url}>")
-            for org in record.employments:
+            for org in record.employments or []:
                 if not org.ror:
                     continue
                 if org.ror not in ror_written:
@@ -172,7 +173,7 @@ def write_owl_rdf(  # noqa:C901
                         ror_parts.append(f"r:{org.ror} a g: .")
                     ror_written.add(org.ror)
                 parts.append(f"w: r:{org.ror}")
-            for education_org in record.educations:
+            for education_org in record.educations or []:
                 if not education_org.ror:
                     continue
                 if education_org.ror not in ror_written:
@@ -184,7 +185,7 @@ def write_owl_rdf(  # noqa:C901
                         ror_parts.append(f"r:{education_org.ror} a g: .")
                     ror_written.add(education_org.ror)
                 parts.append(f"e: r:{education_org.ror}")
-            for member_org in record.educations:
+            for member_org in record.educations or []:
                 if not member_org.ror:
                     continue
                 if member_org.ror not in ror_written:
@@ -198,9 +199,9 @@ def write_owl_rdf(  # noqa:C901
                 parts.append(f"m: r:{member_org.ror}")
             if record.homepage:
                 parts.append(f"hp: <{record.homepage}>")
-            for keyword in sorted(record.keywords):
+            for keyword in sorted(record.keywords or []):
                 parts.append(f"k: {_escape(keyword)}")
-            for work in record.works:
+            for work in record.works or []:
                 if work.pubmed not in pmid_written:
                     if work.title:
                         article_parts.append(

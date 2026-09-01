@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<record:record path="/0009-0006-5701-3998" xmlns:internal="http://www.orcid.org/ns/internal" xmlns:education="http://www.orcid.org/ns/education" xmlns:distinction="http://www.orcid.org/ns/distinction" xmlns:deprecated="http://www.orcid.org/ns/deprecated" xmlns:other-name="http://www.orcid.org/ns/other-name" xmlns:membership="http://www.orcid.org/ns/membership" xmlns:error="http://www.orcid.org/ns/error" xmlns:common="http://www.orcid.org/ns/common" xmlns:record="http://www.orcid.org/ns/record" xmlns:personal-details="http://www.orcid.org/ns/personal-details" xmlns:keyword="http://www.orcid.org/ns/keyword" xmlns:email="http://www.orcid.org/ns/email" xmlns:external-identifier="http://www.orcid.org/ns/external-identifier" xmlns:funding="http://www.orcid.org/ns/funding" xmlns:preferences="http://www.orcid.org/ns/preferences" xmlns:address="http://www.orcid.org/ns/address" xmlns:invited-position="http://www.orcid.org/ns/invited-position" xmlns:work="http://www.orcid.org/ns/work" xmlns:history="http://www.orcid.org/ns/history" xmlns:employment="http://www.orcid.org/ns/employment" xmlns:qualification="http://www.orcid.org/ns/qualification" xmlns:service="http://www.orcid.org/ns/service" xmlns:person="http://www.orcid.org/ns/person" xmlns:activities="http://www.orcid.org/ns/activities" xmlns:researcher-url="http://www.orcid.org/ns/researcher-url" xmlns:peer-review="http://www.orcid.org/ns/peer-review" xmlns:bulk="http://www.orcid.org/ns/bulk" xmlns:research-resource="http://www.orcid.org/ns/research-resource">
+    <common:orcid-identifier>
+        <common:uri>https://orcid.org/0009-0006-5701-3998</common:uri>
+        <common:path>0009-0006-5701-3998</common:path>
+        <common:host>orcid.org</common:host>
+    </common:orcid-identifier>
+    <preferences:preferences>
+        <preferences:locale>en</preferences:locale>
+    </preferences:preferences>
+    <history:history>
+        <history:creation-method>Direct</history:creation-method>
+        <history:submission-date>2023-05-22T17:08:59.639Z</history:submission-date>
+        <common:last-modified-date>2023-05-22T17:10:16.586Z</common:last-modified-date>
+        <history:claimed>true</history:claimed>
+        <history:verified-email>true</history:verified-email>
+        <history:verified-primary-email>true</history:verified-primary-email>
+    </history:history>
+    <person:person path="/0009-0006-5701-3998/person">
+        <common:last-modified-date>2023-05-22T17:10:16.592Z</common:last-modified-date>
+        <person:name visibility="public" path="0009-0006-5701-3998">
+            <common:created-date>2023-05-22T17:08:59.897Z</common:created-date>
+            <common:last-modified-date>2023-05-22T17:08:59.897Z</common:last-modified-date>
+            <personal-details:given-names>websitegame</personal-details:given-names>
+            <personal-details:family-name>bai</personal-details:family-name>
+        </person:name>
+        <other-name:other-names path="/0009-0006-5701-3998/other-names"/>
+        <person:biography visibility="public" path="/0009-0006-5701-3998/biography">
+            <common:created-date>2023-05-22T17:09:38.564Z</common:created-date>
+            <common:last-modified-date>2023-05-22T17:09:38.564Z</common:last-modified-date>
+            <personal-details:content>18 อันดับคาสิโนออนไลน์ที่มีชื่อเสียงที่สุด. ให้ผู้เล่นมีคุณภาพ ศักดิ์ศรี และประสบการณ์สูงสุด ด้วยเทคโนโลยีล้ำสมัยของเกมต่างๆ
+เว็บไซต์: https://en24news.com/18-อันดับคาสิโนออนไลน์ที/
+#คาสิโนออนไลน์ #en24news #en24newscom</personal-details:content>
+        </person:biography>
+        <researcher-url:researcher-urls path="/0009-0006-5701-3998/researcher-urls">
+            <common:last-modified-date>2023-05-22T17:10:16.592Z</common:last-modified-date>
+            <researcher-url:researcher-url put-code="3849912" visibility="public" path="/0009-0006-5701-3998/researcher-urls/3849912" display-index="4">
+                <common:created-date>2023-05-22T17:10:16.592Z</common:created-date>
+                <common:last-modified-date>2023-05-22T17:10:16.592Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0009-0006-5701-3998</common:uri>
+                        <common:path>0009-0006-5701-3998</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>websitegame bai</common:source-name>
+                </common:source>
+                <researcher-url:url-name>https://www.facebook.com/websitegamebai</researcher-url:url-name>
+                <researcher-url:url>https://www.facebook.com/websitegamebai</researcher-url:url>
+            </researcher-url:researcher-url>
+            <researcher-url:researcher-url put-code="3849911" visibility="public" path="/0009-0006-5701-3998/researcher-urls/3849911" display-index="3">
+                <common:created-date>2023-05-22T17:10:16.590Z</common:created-date>
+                <common:last-modified-date>2023-05-22T17:10:16.590Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0009-0006-5701-3998</common:uri>
+                        <common:path>0009-0006-5701-3998</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>websitegame bai</common:source-name>
+                </common:source>
+                <researcher-url:url-name>https://www.youtube.com/@websitegamebai/about</researcher-url:url-name>
+                <researcher-url:url>https://www.youtube.com/@websitegamebai/about</researcher-url:url>
+            </researcher-url:researcher-url>
+            <researcher-url:researcher-url put-code="3849910" visibility="public" path="/0009-0006-5701-3998/researcher-urls/3849910" display-index="2">
+                <common:created-date>2023-05-22T17:10:16.588Z</common:created-date>
+                <common:last-modified-date>2023-05-22T17:10:16.588Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0009-0006-5701-3998</common:uri>
+                        <common:path>0009-0006-5701-3998</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>websitegame bai</common:source-name>
+                </common:source>
+                <researcher-url:url-name>https://www.linkedin.com/in/websitegamebai/?original_referer=</researcher-url:url-name>
+                <researcher-url:url>https://www.linkedin.com/in/websitegamebai/?original_referer=</researcher-url:url>
+            </researcher-url:researcher-url>
+            <researcher-url:researcher-url put-code="3849909" visibility="public" path="/0009-0006-5701-3998/researcher-urls/3849909" display-index="1">
+                <common:created-date>2023-05-22T17:10:16.586Z</common:created-date>
+                <common:last-modified-date>2023-05-22T17:10:16.586Z</common:last-modified-date>
+                <common:source>
+                    <common:source-orcid>
+                        <common:uri>https://orcid.org/0009-0006-5701-3998</common:uri>
+                        <common:path>0009-0006-5701-3998</common:path>
+                        <common:host>orcid.org</common:host>
+                    </common:source-orcid>
+                    <common:source-name>websitegame bai</common:source-name>
+                </common:source>
+                <researcher-url:url-name>https://www.pinterest.com/websitegamebai/</researcher-url:url-name>
+                <researcher-url:url>https://www.pinterest.com/websitegamebai/</researcher-url:url>
+            </researcher-url:researcher-url>
+        </researcher-url:researcher-urls>
+        <email:emails path="/0009-0006-5701-3998/email"/>
+        <address:addresses path="/0009-0006-5701-3998/address"/>
+        <keyword:keywords path="/0009-0006-5701-3998/keywords"/>
+        <external-identifier:external-identifiers path="/0009-0006-5701-3998/external-identifiers"/>
+    </person:person>
+    <activities:activities-summary path="/0009-0006-5701-3998/activities">
+        <activities:distinctions path="/0009-0006-5701-3998/distinctions"/>
+        <activities:educations path="/0009-0006-5701-3998/educations"/>
+        <activities:employments path="/0009-0006-5701-3998/employments"/>
+        <activities:fundings path="/0009-0006-5701-3998/fundings"/>
+        <activities:invited-positions path="/0009-0006-5701-3998/invited-positions"/>
+        <activities:memberships path="/0009-0006-5701-3998/memberships"/>
+        <activities:peer-reviews path="/0009-0006-5701-3998/peer-reviews"/>
+        <activities:qualifications path="/0009-0006-5701-3998/qualifications"/>
+        <activities:research-resources path="/0009-0006-5701-3998/research-resources"/>
+        <activities:services path="/0009-0006-5701-3998/services"/>
+        <activities:works path="/0009-0006-5701-3998/works"/>
+    </activities:activities-summary>
+</record:record>
