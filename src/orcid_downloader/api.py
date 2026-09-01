@@ -707,12 +707,12 @@ def _get_external_identifiers(tree: Element, orcid: str) -> tuple[dict[str, str]
         url = url.removeprefix("http://")
 
         if url.startswith("github.com/"):
-            identifier = url.removeprefix("github.com/")
+            identifier = _remove_params(url).removeprefix("github.com/")
             identifier = identifier.split("?")[0]  # remove trash like ?tab=repositories
             if "/" not in identifier:  # i.e., this is not a specific repo
                 rv["github"] = identifier
         elif url.startswith("www.github.com/"):
-            identifier = url.removeprefix("www.github.com/")
+            identifier = _remove_params(url).removeprefix("www.github.com/")
             if "/" not in identifier:  # i.e., this is not a specific repo
                 rv["github"] = identifier
         elif url.startswith(("twitter.com/", "x.com/")):
@@ -720,41 +720,40 @@ def _get_external_identifiers(tree: Element, orcid: str) -> tuple[dict[str, str]
         elif "facebook" in url or "instagram" in url:
             continue  # skip social media
         elif url.startswith("www.wikidata.org/wiki/"):
-            rv["wikidata"] = url.removeprefix("www.wikidata.org/wiki/")
+            rv["wikidata"] = _remove_params(url).removeprefix("www.wikidata.org/wiki/")
         elif url.startswith("tools.wmflabs.org/scholia/author/"):
-            rv["wikidata"] = url.removeprefix("tools.wmflabs.org/scholia/author/")
+            rv["wikidata"] = _remove_params(url).removeprefix("tools.wmflabs.org/scholia/author/")
         elif "linkedin.com/in/" in url:  # multiple languages subdomains, so startswith doesn't work
-            # TODO strip off /?originalSubdomain=nz
+            url = _remove_params(url)
             rv["linkedin"] = unquote(url.rstrip("/").split("linkedin.com/in/")[1])
         elif "scholar.google" in url:
-            parsed_url = urlparse(url)
-            query_params = parse_qs(parsed_url.query)
-            if google_scholar_ids := query_params.get("user"):
-                rv["google.scholar"] = google_scholar_ids[0]
+            if google_scholar_id := _get_url_param(url, "user"):
+                rv["google.scholar"] = google_scholar_id
         elif url.startswith("publons.com/author/"):
-            rv["publons.researcher"] = url.removeprefix("publons.com/author/").split("/")[0]
+            rv["publons.researcher"] = _remove_params(url).removeprefix("publons.com/author/").split("/")[0]
         elif url.startswith("www.researchgate.net/profile/"):
-            rv["researchgate.profile"] = url.removeprefix("www.researchgate.net/profile/").split(
+            rv["researchgate.profile"] = _remove_params(url).removeprefix("www.researchgate.net/profile/").split(
                 "/"
             )[0]
         elif url.startswith("www.scopus.com/authid/detail.uri?authorId="):
-            rv["scopus"] = url.removeprefix("www.scopus.com/authid/detail.uri?authorId=")
+            if scopus_id := _get_url_param(url, "authorId"):
+                rv["scopus"] = scopus_id
         elif url.startswith("www.webofscience.com/wos/author/record/"):
-            rv["wos.researcher"] = url.removeprefix("www.webofscience.com/wos/author/record/")
+            rv["wos.researcher"] = _remove_params(url).removeprefix("www.webofscience.com/wos/author/record/")
         elif url.startswith("lattes.cnpq.br/"):
-            rv["lattes"] = url.removeprefix("lattes.cnpq.br/")
-        elif url.startswith("dialnet.unirioja.es/servlet/autor?codigo="):
-            rv["dialnet.author"] = url.removeprefix("dialnet.unirioja.es/servlet/autor?codigo=")
-        elif url.startswith("papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id="):
-            rv["ssrn.author"] = url.removeprefix(
-                "papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id="
-            )
+            rv["lattes"] = _remove_params(url).removeprefix("lattes.cnpq.br/")
+        elif url.startswith("dialnet.unirioja.es/servlet/autor"):
+            if dialnet_id := _get_url_param(url, "codigo"):
+                rv["dialnet.author"] = dialnet_id
+        elif url.startswith("papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm"):
+            if ssrn_id := _get_url_param(url, "per_id"):
+                rv["ssrn.author"] = ssrn_id
         elif url.startswith("osf.io/"):
-            rv["osf"] = url.removeprefix("osf.io/")
+            rv["osf"] = _remove_params(url).removeprefix("osf.io/")
         elif url.startswith("viaf.org/viaf/"):
-            rv["viaf"] = url.removeprefix("viaf.org/viaf/")
+            rv["viaf"] = _remove_params(url).removeprefix("viaf.org/viaf/")
         elif url.startswith("ieeexplore.ieee.org/author/"):
-            rv["ieee.author"] = url.removeprefix("ieeexplore.ieee.org/author/")
+            rv["ieee.author"] = _remove_params(url).removeprefix("ieeexplore.ieee.org/author/")
         elif url.startswith("loop.frontiersin.org/people/"):
             loop_identifier = (
                 url.removeprefix("loop.frontiersin.org/people/")
@@ -763,11 +762,11 @@ def _get_external_identifiers(tree: Element, orcid: str) -> tuple[dict[str, str]
             )
             rv["loop"] = loop_identifier
         elif url.startswith("dblp.org/pid/"):
-            rv["dblp.author"] = url.removeprefix("dblp.org/pid/").removesuffix(".html")
+            rv["dblp.author"] = _remove_params(url).removeprefix("dblp.org/pid/").removesuffix(".html")
         elif url.startswith("dblp.uni-trier.de/pid/"):
-            rv["dblp.author"] = url.removeprefix("dblp.uni-trier.de/pid/").removesuffix(".html")
+            rv["dblp.author"] = _remove_params(url).removeprefix("dblp.uni-trier.de/pid/").removesuffix(".html")
         elif url.startswith("hub.docker.com/u/"):
-            rv["dockerhub.user"] = url.removeprefix("hub.docker.com/u/")
+            rv["dockerhub.user"] = _remove_params(url).removeprefix("hub.docker.com/u/")
         elif name:
             if name.lower() == "mastodon":
                 try:
@@ -787,6 +786,18 @@ def _get_external_identifiers(tree: Element, orcid: str) -> tuple[dict[str, str]
 
     return rv, homepage
 
+
+def _remove_params(url: str) -> str:
+    url, _, _ = url.rpartition("?")
+    return url.rstrip("/")
+
+def _get_url_param(url:str, key: str) -> str | None:
+    parsed_url = urlparse(url)
+    query_params = parse_qs(parsed_url.query)
+    rv = query_params.get(key)
+    if rv:
+        return typing.cast(str, rv[0])
+    return None
 
 def _get_emails(tree: Element) -> list[str]:
     return [

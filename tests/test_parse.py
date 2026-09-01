@@ -58,6 +58,13 @@ class TestParse(unittest.TestCase):
         res = parse("0009-0005-6476-5998")
         self.assertEqual("amir-arsalan-ghahari-101019364", res.linkedin)
 
+        res2 = parse("0009-0006-5701-3998")
+        self.assertEqual("websitegamebai", res2.linkedin)
+
+        # weird example with minus first
+        res3 = parse("0000-0003-3589-9995")
+        self.assertEqual("-1VJ-3oAAAAJ", res3.google)
+
     def test_clean_names(self) -> None:
         """Test cleaning names."""
         self.assertEqual("Francess Dufie Azumah", clean_name("Francess Dufie Azumah (DR.)"))
