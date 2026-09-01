@@ -301,11 +301,11 @@ class Record(BaseModel):
     aliases: list[str] | None = None
     xrefs: dict[str, str] | None = None
     works: list[Work] | None = None
-    employments: list[Affiliation] = Field(default_factory=list)
-    educations: list[Affiliation] = Field(default_factory=list)
-    memberships: list[Affiliation] = Field(default_factory=list)
-    emails: list[str] = Field(default_factory=list)
-    keywords: list[str] = Field(default_factory=list)
+    employments: list[Affiliation] | None = None
+    educations: list[Affiliation] | None = None
+    memberships: list[Affiliation] | None = None
+    emails: list[str] | None = None
+    keywords: list[str] | None = None
     commons_image: str | None = None
 
     @property
@@ -321,8 +321,8 @@ class Record(BaseModel):
             return False
         # just see if there's literally anything in there
         return bool(
-            any(employment.ror for employment in self.employments)
-            or any(education.ror for education in self.educations)
+            any(employment.ror for employment in self.employments or [])
+            or any(education.ror for education in self.educations or [])
             # or any("ror" in membership.xrefs for membership in self.memberships)
             or self.works
             or self.xrefs
@@ -393,11 +393,11 @@ class Record(BaseModel):
         """Guess the current affiliation and return its ROR identifier, if available."""
         # assume that if there are employments listed that are not over yet,
         # then these surpass education
-        for employment in self.employments:
+        for employment in self.employments or []:
             if employment.ror and employment.end is None:
                 return employment.ror
 
-        for education in self.educations:
+        for education in self.educations or []:
             if education.ror and education.end is None:
                 return education.ror
 
@@ -480,7 +480,7 @@ def iter_records(  # noqa:C901
             gzip.open(records_path, "wt") as records_file,
             gzip.open(module.join(name="records_hq.jsonl.gz"), "wt") as records_hq_file,
         ):
-            for i, file in enumerate(
+            for i, file_ in enumerate(
                 tqdm(
                     it,
                     unit_scale=True,
@@ -490,7 +490,7 @@ def iter_records(  # noqa:C901
                 ),
                 start=1,
             ):
-                record: Record | None = f(file)
+                record: Record | None = f(file_)
                 if record is None:
                     continue
                 line = record.model_dump_json(exclude_defaults=True, indent=None) + "\n"
@@ -526,7 +526,7 @@ def get_records(
 
 
 def _process_file(  # noqa:C901
-    file: typing.TextIO,
+    file: typing.IO[bytes],
     ror_grounder: ssslm.Grounder[curies.NamableReference],
     orcid_to_wikidata: dict[str, str],
     orcid_to_wikimedia_commons: dict[str, str],
@@ -805,7 +805,7 @@ def _get_url_param(url: str, key: str) -> str | None:
     query_params = parse_qs(parsed_url.query)
     rv = query_params.get(key)
     if rv:
-        return typing.cast(str, rv[0])
+        return rv[0]
     return None
 
 
@@ -1140,25 +1140,26 @@ def write_summaries(  # noqa:C901
                 for email in record.emails:
                     emails_writer.writerow((record.orcid, email))
 
-            sssom_writer.writerows(
-                (
-                    f"orcid:{record.orcid}",
-                    record.name,
-                    "skos:exactMatch",
-                    f"{k}:{v}",
-                    "semapv:ManualMappingCuration",
+            if record.xrefs is not None:
+                sssom_writer.writerows(
+                    (
+                        f"orcid:{record.orcid}",
+                        record.name,
+                        "skos:exactMatch",
+                        f"{k}:{v}",
+                        "semapv:ManualMappingCuration",
+                    )
+                    for k, v in sorted(record.xrefs.items())
                 )
-                for k, v in sorted(record.xrefs.items())
-            )
 
-            if github := record.xrefs.get("github"):
-                githubs_writer.writerow((record.orcid, github))
-                has_github += 1
+                if github := record.xrefs.get("github"):
+                    githubs_writer.writerow((record.orcid, github))
+                    has_github += 1
 
-            for k in record.xrefs:
-                xrefs_counter[k] += 1
+                for k in record.xrefs:
+                    xrefs_counter[k] += 1
 
-            for education in record.educations:
+            for education in record.educations or []:
                 if isinstance(education.role, str):
                     unstandardized_education_roles[education.role] += 1
                     if education.role not in unstandardized_education_roles_example:
@@ -1170,7 +1171,7 @@ def write_summaries(  # noqa:C901
                     if education.name not in affiliation_no_ror_example:
                         affiliation_no_ror_example[education.name] = record.orcid
 
-            for employment in record.employments:
+            for employment in record.employments or []:
                 if isinstance(employment.role, str):
                     employment_roles[employment.role] += 1
                 for k in employment.xrefs or []:
@@ -1180,7 +1181,7 @@ def write_summaries(  # noqa:C901
                     if employment.name not in affiliation_no_ror_example:
                         affiliation_no_ror_example[employment.name] = record.orcid
 
-            for membership in record.memberships:
+            for membership in record.memberships or []:
                 # TODO role standardization?
                 if employment.ror is None:  # and not grounder.ground(education.name):
                     affiliation_no_ror[membership.name] += 1

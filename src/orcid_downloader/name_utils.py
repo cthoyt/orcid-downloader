@@ -25,6 +25,7 @@ def clean_name(name: str) -> str:
     for z in [
         "professor ",
         "prof.",
+        "sr. prof.",
         "dr.-ing.",
         "dr ",
         "dr.",

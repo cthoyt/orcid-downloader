@@ -28,7 +28,7 @@ def parse(orcid: str) -> Record:
     grounder = ssslm.EmptyGrounder()
     orcid_to_wikimedia_commons: dict[str, str] = {}
     orcid_to_wikidata: dict[str, str] = {}
-    with ensure_example(orcid).open() as file:
+    with ensure_example(orcid).open("rb") as file:
         res = _process_file(file, grounder, orcid_to_wikidata, orcid_to_wikimedia_commons)
     if res is None:
         raise ValueError
@@ -69,3 +69,14 @@ class TestParse(unittest.TestCase):
         """Test cleaning names."""
         self.assertEqual("Francess Dufie Azumah", clean_name("Francess Dufie Azumah (DR.)"))
         self.assertEqual("Girjesh Shukla", clean_name("(Dr.) Girjesh Shukla"))
+
+    def test_empty_name_thrown(self) -> None:
+        """Test the primary credit name, which is just an abbreviation, gets thrown out."""
+        res = parse("0000-0003-1605-4778")
+        self.assertEqual("Nita Shah", res.name)
+
+    def test_duplicate_name(self) -> None:
+        """Test duplicate names get filtered out."""
+        res = parse("0000-0002-7596-343X")
+        self.assertEqual("Hussain Arif", res.name)
+        self.assertNotIn("Hussain Arif", res.aliases or [])

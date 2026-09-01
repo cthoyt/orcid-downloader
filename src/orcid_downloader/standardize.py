@@ -290,5 +290,5 @@ def write_counter(
             if header is None:
                 header = "key", "count"
             print(*header, sep=sep, file=file)
-            for key, value in key_values:  # type:ignore[assignment]
+            for key, value in key_values:
                 print(key, value, sep=sep, file=file)

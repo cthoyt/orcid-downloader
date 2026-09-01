@@ -19,7 +19,7 @@ ORCID_RE = re.compile(r"^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$")
 
 def get_orcid_dict(orcid: str, *, timeout: TimeoutHint = None) -> dict[str, Any]:
     """Get ORCID as JSON."""
-    return _get(orcid, format="json", timeout=timeout).json()
+    return _get(orcid, format="json", timeout=timeout).json()  # type:ignore
 
 
 def get_orcid_xml(orcid: str, *, timeout: TimeoutHint = None) -> etree.Element:
