@@ -112,6 +112,7 @@ def cache(test: bool, ror_version: str | None) -> None:
 
 @main.command()
 def ground() -> None:
+    """Ground a researcher."""
     from .api import ground_researcher
 
     version_info = _get_test_version_info()
