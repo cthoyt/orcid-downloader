@@ -15,7 +15,8 @@ def clean_name(name: str) -> str:
     """Clean a name string.
 
     :param name: A full name
-    :return: A cleaned full name, e.g., stripped of titles and suffixes
+
+    :returns: A cleaned full name, e.g., stripped of titles and suffixes
     """
     name = name.strip()
 
@@ -94,6 +95,7 @@ def name_to_synonyms(name: str) -> Iterable[str]:
     """Create a synonym list from a full name.
 
     :param name: A person's name
+
     :yield: Variations on the name
     """
     # assume last part is the last name, this isn't always correct, but :shrug:

@@ -55,7 +55,8 @@ DUB_WS = re.compile(r"\s\s+")
 class VersionInfo:
     """A tuple containing information for downloading ORCID data dumps.
 
-    Search on https://orcid.figshare.com/search?q=ORCID+Public+Data+File&sortBy=posted_date&sortType=desc
+    Search on
+    https://orcid.figshare.com/search?q=ORCID+Public+Data+File&sortBy=posted_date&sortType=desc
     for the newest one.
     """
 
@@ -536,8 +537,10 @@ def _process_file(  # noqa:C901
     :param file: An XML file object
     :param ror_grounder: A grounder object for ROR
     :param orcid_to_wikidata: A one-to-one mapping from ORCID to Wikidata identifiers
-    :param orcid_to_wikimedia_commons: A mapping from ORCID to Wikimedia Commons image tags
-    :return: A record
+    :param orcid_to_wikimedia_commons: A mapping from ORCID to Wikimedia Commons image
+        tags
+
+    :returns: A record
 
     .. code-block:: python
 
@@ -930,6 +933,7 @@ def _standardize_pubmed(pubmed: str) -> str | None:
     """Standardize a pubmed field.
 
     :param pubmed: A string that might somehow represent a pubmed identifier
+
     :returns: A cleaned pubmed identifier, if possible
 
     2023 statistics:
