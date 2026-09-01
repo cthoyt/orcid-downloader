@@ -730,16 +730,20 @@ def _get_external_identifiers(tree: Element, orcid: str) -> tuple[dict[str, str]
             if google_scholar_id := _get_url_param(url, "user"):
                 rv["google.scholar"] = google_scholar_id
         elif url.startswith("publons.com/author/"):
-            rv["publons.researcher"] = _remove_params(url).removeprefix("publons.com/author/").split("/")[0]
+            rv["publons.researcher"] = (
+                _remove_params(url).removeprefix("publons.com/author/").split("/")[0]
+            )
         elif url.startswith("www.researchgate.net/profile/"):
-            rv["researchgate.profile"] = _remove_params(url).removeprefix("www.researchgate.net/profile/").split(
-                "/"
-            )[0]
+            rv["researchgate.profile"] = (
+                _remove_params(url).removeprefix("www.researchgate.net/profile/").split("/")[0]
+            )
         elif url.startswith("www.scopus.com/authid/detail.uri?authorId="):
             if scopus_id := _get_url_param(url, "authorId"):
                 rv["scopus"] = scopus_id
         elif url.startswith("www.webofscience.com/wos/author/record/"):
-            rv["wos.researcher"] = _remove_params(url).removeprefix("www.webofscience.com/wos/author/record/")
+            rv["wos.researcher"] = _remove_params(url).removeprefix(
+                "www.webofscience.com/wos/author/record/"
+            )
         elif url.startswith("lattes.cnpq.br/"):
             rv["lattes"] = _remove_params(url).removeprefix("lattes.cnpq.br/")
         elif url.startswith("dialnet.unirioja.es/servlet/autor"):
@@ -762,9 +766,13 @@ def _get_external_identifiers(tree: Element, orcid: str) -> tuple[dict[str, str]
             )
             rv["loop"] = loop_identifier
         elif url.startswith("dblp.org/pid/"):
-            rv["dblp.author"] = _remove_params(url).removeprefix("dblp.org/pid/").removesuffix(".html")
+            rv["dblp.author"] = (
+                _remove_params(url).removeprefix("dblp.org/pid/").removesuffix(".html")
+            )
         elif url.startswith("dblp.uni-trier.de/pid/"):
-            rv["dblp.author"] = _remove_params(url).removeprefix("dblp.uni-trier.de/pid/").removesuffix(".html")
+            rv["dblp.author"] = (
+                _remove_params(url).removeprefix("dblp.uni-trier.de/pid/").removesuffix(".html")
+            )
         elif url.startswith("hub.docker.com/u/"):
             rv["dockerhub.user"] = _remove_params(url).removeprefix("hub.docker.com/u/")
         elif name:
@@ -791,13 +799,15 @@ def _remove_params(url: str) -> str:
     url, _, _ = url.rpartition("?")
     return url.rstrip("/")
 
-def _get_url_param(url:str, key: str) -> str | None:
+
+def _get_url_param(url: str, key: str) -> str | None:
     parsed_url = urlparse(url)
     query_params = parse_qs(parsed_url.query)
     rv = query_params.get(key)
     if rv:
         return typing.cast(str, rv[0])
     return None
+
 
 def _get_emails(tree: Element) -> list[str]:
     return [
